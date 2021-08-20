@@ -1,0 +1,7 @@
+package Clientes;
+
+public enum TipoCliente {
+	
+	PESSOAFISICA, PESSOAJURIDICA, SERVIDORPUBLICO, FUNCIONARIOBANCO;
+	
+}
