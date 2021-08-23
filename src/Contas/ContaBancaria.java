@@ -16,13 +16,12 @@ public abstract class ContaBancaria extends Cliente {
 	private LocalDate dataAberturaConta;
 	private LocalDate dataFechamentoConta;
 	private String motivoFechamento;
-	private TipoConta tipoConta;
 
 	// Construtores
 
 	public ContaBancaria(String nomeCliente, String numeroDocCliente, int scoreCliente, TipoCliente tipoCliente,
 			String nomeBanco, int codigoIdentificadorBanco, int numeroConta, int numeroAgencia, double saldoConta,
-			LocalDate dataAberturaConta, TipoConta tipoConta) {
+			LocalDate dataAberturaConta) {
 		super(nomeCliente, numeroDocCliente, scoreCliente, tipoCliente);
 		this.nomeBanco = nomeBanco;
 		this.codigoIdentificadorBanco = codigoIdentificadorBanco;
@@ -30,7 +29,6 @@ public abstract class ContaBancaria extends Cliente {
 		this.numeroAgencia = numeroAgencia;
 		this.saldoConta = saldoConta;
 		this.dataAberturaConta = dataAberturaConta;
-		this.tipoConta = tipoConta;
 	}
 
 	// Getters e Setters
@@ -98,18 +96,10 @@ public abstract class ContaBancaria extends Cliente {
 		this.motivoFechamento = motivoFechamento;
 	}
 
-	public TipoConta getTipoConta() {
-		return tipoConta;
-	}
-
-	public void setTipoConta(TipoConta tipoConta) {
-		this.tipoConta = tipoConta;
-	}
-
 	// Método para sacar valores
 	public void sacar(double valor) {
 
-		if ((getSaldoConta() - valor) >= 0) {
+		if (valor > getSaldoConta()) {
 			setSaldoConta(getSaldoConta() - valor);
 
 		} else {
@@ -146,5 +136,20 @@ public abstract class ContaBancaria extends Cliente {
 
 			System.out.println("Não há saldo suficiente para efetuar a transferência");
 		}
+	}
+
+	public String emitirExtrato() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("---------Extrato---------\n");
+		sb.append("Nome do Banco: " + getNomeBanco() + "\n");
+		sb.append("Código Identificador: " + getCodigoIdentificadorBanco() + "\n");
+		sb.append("Nome do cliente: " + getNomeCliente() + "\n");
+		sb.append("Numero da Conta: " + getNumeroConta() + "\n");
+		sb.append("Numero da Agência: " + getNumeroAgencia() + "\n");
+		sb.append("Saldo da Conta: " + String.format("%.2f", getSaldoConta()) + "\n");
+		System.out.println(sb);
+		return sb.toString();
+
 	}
 }

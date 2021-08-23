@@ -13,9 +13,9 @@ public class ContaPoupanca extends ContaBancaria {
 	
 	public ContaPoupanca(String nomeCliente, String numeroDocCliente, int scoreCliente, TipoCliente tipoCliente,
 			String nomeBanco, int codigoIdentificadorBanco, int numeroConta, int numeroAgencia, double saldoConta,
-			LocalDate dataAberturaConta, TipoConta tipoConta) {
+			LocalDate dataAberturaConta) {
 		super(nomeCliente, numeroDocCliente, scoreCliente, tipoCliente, nomeBanco, codigoIdentificadorBanco, numeroConta,
-				numeroAgencia, saldoConta, dataAberturaConta, tipoConta);
+				numeroAgencia, saldoConta, dataAberturaConta);
 	}
 
 	// Getters e Setters

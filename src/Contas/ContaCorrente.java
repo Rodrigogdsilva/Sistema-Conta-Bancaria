@@ -11,6 +11,7 @@ public class ContaCorrente extends ContaBancaria {
 	// Atributos
 	final private double desconto = 13.9;
 	private int quantidadeSaques;
+	private int quantidadeTransferencias;
 
 	Scanner scan = new Scanner(System.in);
 
@@ -18,9 +19,9 @@ public class ContaCorrente extends ContaBancaria {
 
 	public ContaCorrente(String nomeCliente, String numeroDocCliente, int scoreCliente, TipoCliente tipoCliente,
 			String nomeBanco, int codigoIdentificadorBanco, int numeroConta, int numeroAgencia, double saldoConta,
-			LocalDate dataAberturaConta, TipoConta tipoConta) {
-		super(nomeCliente, numeroDocCliente, scoreCliente, tipoCliente, nomeBanco, codigoIdentificadorBanco, numeroConta,
-				numeroAgencia, saldoConta, dataAberturaConta, tipoConta);
+			LocalDate dataAberturaConta) {
+		super(nomeCliente, numeroDocCliente, scoreCliente, tipoCliente, nomeBanco, codigoIdentificadorBanco,
+				numeroConta, numeroAgencia, saldoConta, dataAberturaConta);
 	}
 
 	// Getters e Setters
@@ -28,27 +29,23 @@ public class ContaCorrente extends ContaBancaria {
 		return quantidadeSaques;
 	}
 
-	public void setQuantidadeSaques(int quantidadeSaques) {
-		this.quantidadeSaques = quantidadeSaques;
-	}
-
 	public double getDesconto() {
 		return desconto;
+	}
+
+	public double getQuantidadeTransferencias() {
+		return quantidadeTransferencias;
 	}
 
 	// Sobrescrição do método sacar da classe ContaBancária
 	@Override
 	public void sacar(double valor) {
 
-		double saldo = getSaldoConta();
-
 		// Caso o valor do saque seja menor que o saldo da conta e a quantidade
 		// de saques seja menor que 4
-		if ((saldo - valor) >= 0 & quantidadeSaques < 4) {
+		if (valor <= getSaldoConta() & quantidadeSaques < 4) {
 
-			saldo -= valor;
-
-			setSaldoConta(saldo);
+			setSaldoConta(getSaldoConta() - valor);
 
 			quantidadeSaques++;
 
@@ -56,7 +53,7 @@ public class ContaCorrente extends ContaBancaria {
 
 			// Caso o valor do saque seja menor que o saldo da conta e a
 			// quantidade de saques seja maior que 4
-		} else if ((saldo - valor) >= 0 & quantidadeSaques >= 4) {
+		} else if (valor <= getSaldoConta() & quantidadeSaques >= 4) {
 
 			int operacao;
 
@@ -69,9 +66,7 @@ public class ContaCorrente extends ContaBancaria {
 
 			case 1:
 
-				saldo -= (valor * 1.02);
-
-				setSaldoConta(saldo);
+				setSaldoConta(getSaldoConta() - (valor * 1.02));
 
 				quantidadeSaques++;
 
@@ -94,11 +89,40 @@ public class ContaCorrente extends ContaBancaria {
 		}
 	}
 
+	// Calcula o novo saldo para verificar se deve ser efetuado o desconto de
+	// 13,9 relacionado a tarifa bancária
 	public void calcularSaldoComDesconto() {
 
 		if (super.getDataAberturaConta().getDayOfMonth() == LocalDate.now().getDayOfMonth()) {
 			super.setSaldoConta(this.getSaldoConta() - desconto);
 			System.out.println(getSaldoConta());
+		}
+	}
+
+	// Sobrescrição do método para transferencia bancária entre contas,
+	// aplicando a regra de negócio de conta corrente
+	@Override
+	public void transferencia(ContaBancaria conta, double valor) {
+
+		if (getSaldoConta() >= valor && quantidadeTransferencias < 4) {
+
+			this.sacar(valor);
+
+			conta.deposito(valor);
+
+			System.out.println("Transferencia realizada com sucesso.");
+
+			quantidadeTransferencias++;
+
+		} else if (getSaldoConta() < valor) {
+
+			System.out.println("Não há saldo suficiente para efetuar a transferência");
+
+		} else if (quantidadeTransferencias >= 4) {
+
+			System.out.println(
+					"Você já atingiu o limite mensal de transferências! \nNão foi possível efetuar a operação.");
+
 		}
 	}
 }
