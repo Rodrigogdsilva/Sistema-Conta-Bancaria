@@ -1,8 +1,7 @@
-package Contas;
+package contas;
 
 import org.joda.time.LocalDate;
-
-import Clientes.TipoCliente;
+import clientes.Cliente;
 
 public class ContaEmpresarial extends ContaBancaria {
 
@@ -10,11 +9,9 @@ public class ContaEmpresarial extends ContaBancaria {
 	private String nomeEmpresa;
 
 	// Construtores
-	public ContaEmpresarial(String nomeCliente, String numeroDocCliente, int scoreCliente, TipoCliente tipoCliente,
-			String nomeBanco, int codigoIdentificadorBanco, int numeroConta, int numeroAgencia, double saldoConta,
-			LocalDate dataAberturaConta, String nomeEmpresa) {
-		super(nomeCliente, numeroDocCliente, scoreCliente, tipoCliente, nomeBanco, codigoIdentificadorBanco, numeroConta,
-				numeroAgencia, saldoConta, dataAberturaConta);
+	public ContaEmpresarial(Cliente cliente, String nomeBanco, int codigoIdentificadorBanco, int numeroConta,
+			int numeroAgencia, double saldoConta, LocalDate dataAberturaConta, String nomeEmpresa) {
+		super(cliente, nomeBanco, codigoIdentificadorBanco, numeroConta, numeroAgencia, saldoConta, dataAberturaConta);
 		this.nomeEmpresa = nomeEmpresa;
 	}
 
@@ -28,19 +25,18 @@ public class ContaEmpresarial extends ContaBancaria {
 	}
 
 	@Override
-	public String emitirExtrato(){
-		
+	public String emitirExtrato() {
+
 		StringBuilder sb = new StringBuilder();
 		sb.append("---------Extrato---------\n");
 		sb.append("Nome do Banco: " + getNomeBanco() + "\n");
 		sb.append("Código Identificador: " + getCodigoIdentificadorBanco() + "\n");
 		sb.append("Nome da Empresa: " + getNomeEmpresa() + "\n");
-		sb.append("Nome do cliente: " + getNomeCliente() + "\n");
+		sb.append("Nome do cliente: " + getCliente().getNomeCliente() + "\n");
 		sb.append("Numero da Conta: " + getNumeroConta() + "\n");
 		sb.append("Numero da Agência: " + getNumeroAgencia() + "\n");
 		sb.append("Saldo da Conta: " + String.format("%.2f", getSaldoConta()) + "\n");
 		System.out.println(sb);
 		return sb.toString();
-		
 	}
 }

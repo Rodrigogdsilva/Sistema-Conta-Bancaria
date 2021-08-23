@@ -1,21 +1,27 @@
-package Contas;
+package contas;
 
+import java.util.Scanner;
 import org.joda.time.LocalDate;
-
-import Clientes.TipoCliente;
+import clientes.Cliente;
 
 public class ContaPoupanca extends ContaBancaria {
 
 	// Atributos
-	private final double rendimentoMensal = 0.02;
+	private int rendimentoMensal;
+	private int descontoCarencia;
+	private int periodoCarencia;
+
+	Scanner scan = new Scanner(System.in);
 
 	// Construtores
-	
-	public ContaPoupanca(String nomeCliente, String numeroDocCliente, int scoreCliente, TipoCliente tipoCliente,
-			String nomeBanco, int codigoIdentificadorBanco, int numeroConta, int numeroAgencia, double saldoConta,
-			LocalDate dataAberturaConta) {
-		super(nomeCliente, numeroDocCliente, scoreCliente, tipoCliente, nomeBanco, codigoIdentificadorBanco, numeroConta,
-				numeroAgencia, saldoConta, dataAberturaConta);
+
+	public ContaPoupanca(Cliente cliente, String nomeBanco, int codigoIdentificadorBanco, int numeroConta,
+			int numeroAgencia, double saldoConta, LocalDate dataAberturaConta, int rendimentoMensal,
+			int descontoCarencia, int periodoCarencia) {
+		super(cliente, nomeBanco, codigoIdentificadorBanco, numeroConta, numeroAgencia, saldoConta, dataAberturaConta);
+		this.rendimentoMensal = rendimentoMensal;
+		this.descontoCarencia = descontoCarencia;
+		this.periodoCarencia = periodoCarencia;
 	}
 
 	// Getters e Setters
@@ -23,13 +29,32 @@ public class ContaPoupanca extends ContaBancaria {
 		return rendimentoMensal;
 	}
 
+	public int getDescontoCarencia() {
+		return descontoCarencia;
+	}
+
+	public void setDescontoCarencia(int descontoCarencia) {
+		this.descontoCarencia = descontoCarencia;
+	}
+
+	public int getPeriodoCarencia() {
+		return periodoCarencia;
+	}
+
+	public void setPeriodoCarencia(int periodoCarencia) {
+		this.periodoCarencia = periodoCarencia;
+	}
+
+	public void setRendimentoMensal(int rendimentoMensal) {
+		this.rendimentoMensal = rendimentoMensal;
+	}
+
 	// Método para cálculo do rendimento mensal da poupança de acordo com o dia
 	// 1 de cada mês
 	public void calcularSaldoNovoComValorizacao() {
 
 		if (LocalDate.now().dayOfMonth().equals(1)) {
-			double saldo = getSaldoConta();
-			setSaldoConta(saldo = saldo * rendimentoMensal);
+			setSaldoConta(getSaldoConta() + rendimentoMensal);
 		} else {
 			System.out.println("Hoje não é o dia de rendimento! \nO seu dia de rendimento é: "
 					+ super.getDataAberturaConta().getDayOfMonth() + " de cada mês.");
@@ -41,22 +66,50 @@ public class ContaPoupanca extends ContaBancaria {
 	@Override
 	public void sacar(double valor) {
 
-		if (LocalDate.now().getMonthOfYear() - super.getDataAberturaConta().getMonthOfYear() >= 1) {
+		if ((LocalDate.now().getMonthOfYear() - super.getDataAberturaConta().getMonthOfYear()) >= periodoCarencia) {
 
-			if (LocalDate.now().getYear() - super.getDataAberturaConta().getYear() >= 1) {
+			if ((LocalDate.now().getYear() - super.getDataAberturaConta().getYear()) >= 1) {
 				setSaldoConta(getSaldoConta() - valor);
 				System.out.println("Saque realizado com sucesso. \nSaldo atual: " + getSaldoConta());
 			}
 
+		} else if ((LocalDate.now().getMonthOfYear()
+				- super.getDataAberturaConta().getMonthOfYear()) < periodoCarencia) {
+
+			if ((LocalDate.now().getYear() - super.getDataAberturaConta().getYear()) < 1) {
+
+				System.out.println("ATENÇÃO ! \nTentativa de saque dentro do período de carência. \n "
+						+ "Caso deseje prosseguir será cobrado R$ 5,00 adicional sobre o valor do saque.");
+
+				System.out.println("Deseja realizar a operação? \n1 - Sim \n2 - Não");
+
+				int operacao;
+
+				operacao = scan.nextInt();
+
+				switch (operacao) {
+
+				case 1:
+
+					setSaldoConta(getSaldoConta() - (valor + 5));
+
+					System.out.println("Saque realizado com sucesso! \nNovo Saldo: " + getSaldoConta());
+
+					break;
+
+				case 2:
+
+					System.out.println("Operação cancelada conforme solicitado pelo usuário");
+
+					break;
+				}
+
+			}
+
 		} else {
 
-			if (LocalDate.now().monthOfYear().equals(getDataAberturaConta().monthOfYear())) {
-				System.out.println("Não foi possível completar a operação. "
-						+ "\nO tempo para saque ainda não ultrapassou 30 dias");
+			System.out.println("Seu saldo é insulficiente para esta operação");
 
-			} else if (getSaldoConta() < valor) {
-				System.out.println("Seu saldo é insulficiente para esta operação");
-			}
 		}
 	}
 }

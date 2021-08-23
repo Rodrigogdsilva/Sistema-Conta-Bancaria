@@ -1,13 +1,15 @@
-package Contas;
+package contas;
 
 import org.joda.time.LocalDate;
-import Clientes.Cliente;
-import Clientes.TipoCliente;
 
-public abstract class ContaBancaria extends Cliente {
+import clientes.Cliente;
+import clientes.TipoCliente;
+
+public abstract class ContaBancaria{
 
 	// Atributos
 
+	private Cliente cliente;
 	private String nomeBanco;
 	private int codigoIdentificadorBanco;
 	private int numeroConta;
@@ -19,10 +21,9 @@ public abstract class ContaBancaria extends Cliente {
 
 	// Construtores
 
-	public ContaBancaria(String nomeCliente, String numeroDocCliente, int scoreCliente, TipoCliente tipoCliente,
-			String nomeBanco, int codigoIdentificadorBanco, int numeroConta, int numeroAgencia, double saldoConta,
-			LocalDate dataAberturaConta) {
-		super(nomeCliente, numeroDocCliente, scoreCliente, tipoCliente);
+	public ContaBancaria(Cliente cliente, String nomeBanco, int codigoIdentificadorBanco, 
+			int numeroConta, int numeroAgencia, double saldoConta,	LocalDate dataAberturaConta) {
+		this.cliente = cliente;
 		this.nomeBanco = nomeBanco;
 		this.codigoIdentificadorBanco = codigoIdentificadorBanco;
 		this.numeroConta = numeroConta;
@@ -95,6 +96,14 @@ public abstract class ContaBancaria extends Cliente {
 	public void setMotivoFechamento(String motivoFechamento) {
 		this.motivoFechamento = motivoFechamento;
 	}
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
 	// Método para sacar valores
 	public void sacar(double valor) {
@@ -144,12 +153,11 @@ public abstract class ContaBancaria extends Cliente {
 		sb.append("---------Extrato---------\n");
 		sb.append("Nome do Banco: " + getNomeBanco() + "\n");
 		sb.append("Código Identificador: " + getCodigoIdentificadorBanco() + "\n");
-		sb.append("Nome do cliente: " + getNomeCliente() + "\n");
+		sb.append("Nome do cliente: " + cliente.getNomeCliente() + "\n");
 		sb.append("Numero da Conta: " + getNumeroConta() + "\n");
 		sb.append("Numero da Agência: " + getNumeroAgencia() + "\n");
 		sb.append("Saldo da Conta: " + String.format("%.2f", getSaldoConta()) + "\n");
 		System.out.println(sb);
 		return sb.toString();
-
 	}
 }

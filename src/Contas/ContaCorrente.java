@@ -1,10 +1,8 @@
-package Contas;
+package contas;
 
 import java.util.Scanner;
-
 import org.joda.time.LocalDate;
-
-import Clientes.TipoCliente;
+import clientes.Cliente;
 
 public class ContaCorrente extends ContaBancaria {
 
@@ -12,16 +10,19 @@ public class ContaCorrente extends ContaBancaria {
 	final private double desconto = 13.9;
 	private int quantidadeSaques;
 	private int quantidadeTransferencias;
+	private int quantidadeMaximaSaques;
+	private int quantidadeMaximaTransferencias;
 
 	Scanner scan = new Scanner(System.in);
 
 	// Construtores
 
-	public ContaCorrente(String nomeCliente, String numeroDocCliente, int scoreCliente, TipoCliente tipoCliente,
-			String nomeBanco, int codigoIdentificadorBanco, int numeroConta, int numeroAgencia, double saldoConta,
-			LocalDate dataAberturaConta) {
-		super(nomeCliente, numeroDocCliente, scoreCliente, tipoCliente, nomeBanco, codigoIdentificadorBanco,
-				numeroConta, numeroAgencia, saldoConta, dataAberturaConta);
+	public ContaCorrente(Cliente cliente, String nomeBanco, int codigoIdentificadorBanco, int numeroConta,
+			int numeroAgencia, double saldoConta, LocalDate dataAberturaConta, int quantidadeMaximaSaques,
+			int quantidadeMaximaTransferencias) {
+		super(cliente, nomeBanco, codigoIdentificadorBanco, numeroConta, numeroAgencia, saldoConta, dataAberturaConta);
+		this.quantidadeMaximaSaques = quantidadeMaximaSaques;
+		this.quantidadeMaximaTransferencias = quantidadeMaximaTransferencias;
 	}
 
 	// Getters e Setters
@@ -37,13 +38,29 @@ public class ContaCorrente extends ContaBancaria {
 		return quantidadeTransferencias;
 	}
 
+	public int getQuantidadeMaximaSaques() {
+		return quantidadeMaximaSaques;
+	}
+
+	public void setQuantidadeMaximaSaques(int quantidadeMaximaSaques) {
+		this.quantidadeMaximaSaques = quantidadeMaximaSaques;
+	}
+
+	public int getQuantidadeMaximaTransferencias() {
+		return quantidadeMaximaTransferencias;
+	}
+
+	public void setQuantidadeMaximaTransferencias(int quantidadeMaximaTransferencias) {
+		this.quantidadeMaximaTransferencias = quantidadeMaximaTransferencias;
+	}
+
 	// Sobrescrição do método sacar da classe ContaBancária
 	@Override
 	public void sacar(double valor) {
 
 		// Caso o valor do saque seja menor que o saldo da conta e a quantidade
 		// de saques seja menor que 4
-		if (valor <= getSaldoConta() & quantidadeSaques < 4) {
+		if (valor <= getSaldoConta() && quantidadeSaques < quantidadeMaximaSaques) {
 
 			setSaldoConta(getSaldoConta() - valor);
 
@@ -53,20 +70,20 @@ public class ContaCorrente extends ContaBancaria {
 
 			// Caso o valor do saque seja menor que o saldo da conta e a
 			// quantidade de saques seja maior que 4
-		} else if (valor <= getSaldoConta() & quantidadeSaques >= 4) {
+		} else if (valor <= getSaldoConta() && quantidadeSaques >= quantidadeMaximaSaques) {
 
 			int operacao;
 
 			System.out.println(
-					"Devido a quantidade de saques mensais excedidos, será cobrada uma taxa de 2% sobre o saldo restante");
-			System.out.println("Deseja realizar a operação? \n1- Sim \n2- Não");
+					"Devido a quantidade de saques mensais excedidos, serão cobrados R$ 5,00 adicionais sobre o valor do saque");
+			System.out.println("Deseja realizar a operação? \n1 - Sim \n2 - Não");
 			operacao = scan.nextInt();
 
 			switch (operacao) {
 
 			case 1:
 
-				setSaldoConta(getSaldoConta() - (valor * 1.02));
+				setSaldoConta(getSaldoConta() - (valor + 5));
 
 				quantidadeSaques++;
 
@@ -104,7 +121,7 @@ public class ContaCorrente extends ContaBancaria {
 	@Override
 	public void transferencia(ContaBancaria conta, double valor) {
 
-		if (getSaldoConta() >= valor && quantidadeTransferencias < 4) {
+		if (valor <= getSaldoConta() && quantidadeTransferencias < quantidadeMaximaTransferencias) {
 
 			this.sacar(valor);
 
@@ -114,14 +131,37 @@ public class ContaCorrente extends ContaBancaria {
 
 			quantidadeTransferencias++;
 
-		} else if (getSaldoConta() < valor) {
+		} else if (getSaldoConta() <= valor && quantidadeTransferencias >= quantidadeMaximaTransferencias) {
 
-			System.out.println("Não há saldo suficiente para efetuar a transferência");
-
-		} else if (quantidadeTransferencias >= 4) {
+			int operacao;
 
 			System.out.println(
-					"Você já atingiu o limite mensal de transferências! \nNão foi possível efetuar a operação.");
+					"Devido a quantidade de transferências mensais excedidas, será cobrado R$ 5,00 a mais sobre o valor do saque");
+			System.out.println("Deseja realizar a operação? \n1- Sim \n2- Não");
+			operacao = scan.nextInt();
+
+			switch (operacao) {
+
+			case 1:
+
+				setSaldoConta(getSaldoConta() - (valor + 5));
+
+				quantidadeSaques++;
+
+				System.out.println("Transferência realizada com sucesso! \nNovo Saldo: " + getSaldoConta());
+
+				break;
+
+			case 2:
+
+				System.out.println("Operação cancelada conforme solicitado pelo usuário");
+
+				break;
+			}
+
+		} else {
+
+			System.out.println("Não há saldo suficiente para efetuar a transferência");
 
 		}
 	}
