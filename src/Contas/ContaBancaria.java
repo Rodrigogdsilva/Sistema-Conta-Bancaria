@@ -1,9 +1,8 @@
 package contas;
 
 import org.joda.time.LocalDate;
-
 import clientes.Cliente;
-import clientes.TipoCliente;
+
 
 public abstract class ContaBancaria{
 
