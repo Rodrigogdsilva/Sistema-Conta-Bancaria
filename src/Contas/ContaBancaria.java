@@ -3,8 +3,7 @@ package contas;
 import org.joda.time.LocalDate;
 import clientes.Cliente;
 
-
-public abstract class ContaBancaria{
+public abstract class ContaBancaria {
 
 	// Atributos
 
@@ -17,11 +16,12 @@ public abstract class ContaBancaria{
 	private LocalDate dataAberturaConta;
 	private LocalDate dataFechamentoConta;
 	private String motivoFechamento;
+	ContaBancaria conta[] = new ContaBancaria[20];
 
 	// Construtores
 
-	public ContaBancaria(Cliente cliente, String nomeBanco, int codigoIdentificadorBanco, 
-			int numeroConta, int numeroAgencia, double saldoConta,	LocalDate dataAberturaConta) {
+	public ContaBancaria(Cliente cliente, String nomeBanco, int codigoIdentificadorBanco, int numeroConta,
+			int numeroAgencia, double saldoConta, LocalDate dataAberturaConta) {
 		this.cliente = cliente;
 		this.nomeBanco = nomeBanco;
 		this.codigoIdentificadorBanco = codigoIdentificadorBanco;
@@ -95,7 +95,7 @@ public abstract class ContaBancaria{
 	public void setMotivoFechamento(String motivoFechamento) {
 		this.motivoFechamento = motivoFechamento;
 	}
-	
+
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -107,25 +107,25 @@ public abstract class ContaBancaria{
 	// Método para sacar valores
 	public void sacar(double valor) {
 
-		if (valor > getSaldoConta()) {
-			setSaldoConta(getSaldoConta() - valor);
+		if (valor > saldoConta) {
+			saldoConta -= valor;
 
 		} else {
 
 			System.out.println("Impossível realizar a transação!! \nSaldo insuficiente para saque, a mesma possui: "
-					+ getSaldoConta() + " de saldo.");
+					+ saldoConta + " de saldo.");
 		}
 	}
 
 	// Método para depositar valores na conta
 	public void deposito(double valor) {
-		setSaldoConta(getSaldoConta() + valor);
+		saldoConta += valor;
 		System.out.println(verificarSaldo());
 	}
 
 	// Verifica o saldo da conta
 	public String verificarSaldo() {
-		return "Saldo da Conta: " + String.valueOf(getSaldoConta());
+		return "Saldo da Conta: " + String.valueOf(saldoConta);
 	}
 
 	// Método para transferencia
@@ -150,13 +150,25 @@ public abstract class ContaBancaria{
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("---------Extrato---------\n");
-		sb.append("Nome do Banco: " + getNomeBanco() + "\n");
-		sb.append("Código Identificador: " + getCodigoIdentificadorBanco() + "\n");
+		sb.append("Nome do Banco: " + nomeBanco + "\n");
+		sb.append("Código Identificador: " + codigoIdentificadorBanco + "\n");
 		sb.append("Nome do cliente: " + cliente.getNomeCliente() + "\n");
-		sb.append("Numero da Conta: " + getNumeroConta() + "\n");
-		sb.append("Numero da Agência: " + getNumeroAgencia() + "\n");
-		sb.append("Saldo da Conta: " + String.format("%.2f", getSaldoConta()) + "\n");
-		System.out.println(sb);
+		sb.append("Numero da Conta: " + numeroConta + "\n");
+		sb.append("Numero da Agência: " + numeroAgencia + "\n");
+		sb.append("Saldo da Conta: " + String.format("%.2f", saldoConta) + "\n");
 		return sb.toString();
 	}
+	
+	public String toString() {
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("Nome do Banco: " + nomeBanco + "\n");
+		sb.append("Código Identificador: " + codigoIdentificadorBanco + "\n");
+		sb.append("Nome do cliente: " + cliente.getNomeCliente() + "\n");
+		sb.append("Numero da Conta: " + numeroConta + "\n");
+		sb.append("Numero da Agência: " + numeroAgencia + "\n");
+		sb.append("Saldo da Conta: " + String.format("%.2f", saldoConta) + "\n");
+		return sb.toString();
+	}
+
 }

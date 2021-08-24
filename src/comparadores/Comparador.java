@@ -1,8 +1,5 @@
 package comparadores;
 
-import clientes.Cliente;
-import contas.ContaBancaria;
-
 public class Comparador {
 
 	private String primeiraString;
