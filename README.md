@@ -1,1 +1,1 @@
-# Versão 1.2 do Sistema
+# Versão 1.3 do Sistema
