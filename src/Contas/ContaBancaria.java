@@ -18,9 +18,9 @@ public abstract class ContaBancaria {
 	private String motivoFechamento;
 
 	// Construtores
-	
-	public ContaBancaria(){
-		
+
+	public ContaBancaria() {
+
 	}
 
 	public ContaBancaria(Cliente cliente, String nomeBanco, int codigoIdentificadorBanco, int numeroConta,
@@ -33,8 +33,6 @@ public abstract class ContaBancaria {
 		this.saldoConta = saldoConta;
 		this.dataAberturaConta = dataAberturaConta;
 	}
-
-
 
 	// Getters e Setters
 	public String getNomeBanco() {

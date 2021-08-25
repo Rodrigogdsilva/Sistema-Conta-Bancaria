@@ -46,13 +46,12 @@ public class ContaEmpresarial extends ContaBancaria {
 		return sb.toString();
 	}
 
-
 	public void imprimirQuantidadeElementosDoArray() {
 
 		System.out.println("\nExistem " + contador + " cadastradas no nosso sistema.");
 
 	}
-	
+
 	public void adicionarElementosNoArray(ContaEmpresarial conta) {
 		if (contador < contaEmpresarials.length) {
 			contaEmpresarials[contador] = conta;

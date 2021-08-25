@@ -113,24 +113,22 @@ public class Main {
 		contaCorrenteArray.adicionarElementosNoArray(contaCorrente5);
 		contaCorrenteArray.adicionarElementosNoArray(contaCorrente6);
 		contaCorrenteArray.adicionarElementosNoArray(contaCorrente7);
-		
+
 		contaCorrenteArray.imprimirOPrimeiroElementoDoArray();
 		contaCorrenteArray.imprimirOUltimoElementoDoArray();
 		contaCorrenteArray.imprimirQuantidadeElementosDoArray();
-		
-		
+
 		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca1);
 		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca2);
 		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca3);
 		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca4);
 		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca5);
 		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca6);
-		
+
 		contaPoupancaArray.imprimirOPrimeiroElementoDoArray();
 		contaPoupancaArray.imprimirOUltimoElementoDoArray();
 		contaPoupancaArray.imprimirQuantidadeElementosDoArray();
-		
-		
+
 		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial1);
 		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial2);
 		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial3);
@@ -138,7 +136,7 @@ public class Main {
 		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial5);
 		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial6);
 		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial7);
-		
+
 		contaEmpresarialArray.imprimirOPrimeiroElementoDoArray();
 		contaEmpresarialArray.imprimirOUltimoElementoDoArray();
 		contaEmpresarialArray.imprimirQuantidadeElementosDoArray();
@@ -180,21 +178,27 @@ public class Main {
 		}
 	}
 
-	/*public static void imprimirQuantidadeElementosDoArray(ContaBancaria... conta) {
-
-		System.out.println("\nO Array possui " + Stream.of(conta).count() + " elementos \n");
-
-	}
-
-	public static void imprimirOPrimeiroElementoDoArray(ContaBancaria... conta) {
-
-		Stream.of(conta).limit(1).forEach(System.out::println);
-
-	}
-
-	public static void imprimirOUltimoElementoDoArray(ContaBancaria... conta) {
-
-		Stream.of(conta).skip(conta.length - 1).forEach(System.out::println);
-
-	}*/
+	/*
+	 * public static void imprimirQuantidadeElementosDoArray(ContaBancaria...
+	 * conta) {
+	 * 
+	 * System.out.println("\nO Array possui " + Stream.of(conta).count() +
+	 * " elementos \n");
+	 * 
+	 * }
+	 * 
+	 * public static void imprimirOPrimeiroElementoDoArray(ContaBancaria...
+	 * conta) {
+	 * 
+	 * Stream.of(conta).limit(1).forEach(System.out::println);
+	 * 
+	 * }
+	 * 
+	 * public static void imprimirOUltimoElementoDoArray(ContaBancaria... conta)
+	 * {
+	 * 
+	 * Stream.of(conta).skip(conta.length - 1).forEach(System.out::println);
+	 * 
+	 * }
+	 */
 }
