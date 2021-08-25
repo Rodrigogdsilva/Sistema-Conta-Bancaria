@@ -12,10 +12,16 @@ public class ContaCorrente extends ContaBancaria {
 	private int quantidadeTransferencias;
 	private int quantidadeMaximaSaques;
 	private int quantidadeMaximaTransferencias;
+	private int contador;
+	private ContaCorrente[] contaCorrentes = new ContaCorrente[7];
 
 	Scanner scan = new Scanner(System.in);
 
 	// Construtores
+
+	public ContaCorrente() {
+		super();
+	}
 
 	public ContaCorrente(Cliente cliente, String nomeBanco, int codigoIdentificadorBanco, int numeroConta,
 			int numeroAgencia, double saldoConta, LocalDate dataAberturaConta, int quantidadeMaximaSaques,
@@ -165,4 +171,39 @@ public class ContaCorrente extends ContaBancaria {
 
 		}
 	}
+
+	public void imprimirQuantidadeElementosDoArray() {
+
+		System.out.println("\nExistem " + contador + " cadastradas no nosso sistema.");
+
+	}
+
+	public void adicionarElementosNoArray(ContaCorrente conta) {
+		if (contador < contaCorrentes.length) {
+			contaCorrentes[contador] = conta;
+			contador++;
+		} else {
+			System.out.println("Capacidade máxima de armazenamento atingida, não é possível adicionar mais contas.");
+		}
+	}
+
+	public void imprimirOPrimeiroElementoDoArray() {
+
+		if (!(contaCorrentes[0].equals(null))) {
+			System.out.println("\n------------------------ ");
+			System.out.println(contaCorrentes[0]);
+			System.out.println("------------------------");
+		} else {
+			System.out.println("Não foi possível exibir. \nNão há contas cadastradas.");
+		}
+	}
+
+	public void imprimirOUltimoElementoDoArray() {
+
+		System.out.println("\n------------------------ ");
+		System.out.println(contaCorrentes[contador - 1]);
+		System.out.println("------------------------");
+
+	}
+
 }

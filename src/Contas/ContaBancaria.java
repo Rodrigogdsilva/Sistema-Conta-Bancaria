@@ -16,9 +16,12 @@ public abstract class ContaBancaria {
 	private LocalDate dataAberturaConta;
 	private LocalDate dataFechamentoConta;
 	private String motivoFechamento;
-	ContaBancaria conta[] = new ContaBancaria[20];
 
 	// Construtores
+	
+	public ContaBancaria(){
+		
+	}
 
 	public ContaBancaria(Cliente cliente, String nomeBanco, int codigoIdentificadorBanco, int numeroConta,
 			int numeroAgencia, double saldoConta, LocalDate dataAberturaConta) {
@@ -30,6 +33,8 @@ public abstract class ContaBancaria {
 		this.saldoConta = saldoConta;
 		this.dataAberturaConta = dataAberturaConta;
 	}
+
+
 
 	// Getters e Setters
 	public String getNomeBanco() {
@@ -146,19 +151,6 @@ public abstract class ContaBancaria {
 		}
 	}
 
-	public String emitirExtrato() {
-
-		StringBuilder sb = new StringBuilder();
-		sb.append("---------Extrato---------\n");
-		sb.append("Nome do Banco: " + nomeBanco + "\n");
-		sb.append("Código Identificador: " + codigoIdentificadorBanco + "\n");
-		sb.append("Nome do cliente: " + cliente.getNomeCliente() + "\n");
-		sb.append("Numero da Conta: " + numeroConta + "\n");
-		sb.append("Numero da Agência: " + numeroAgencia + "\n");
-		sb.append("Saldo da Conta: " + String.format("%.2f", saldoConta) + "\n");
-		return sb.toString();
-	}
-	
 	public String toString() {
 
 		StringBuilder sb = new StringBuilder();
@@ -167,7 +159,7 @@ public abstract class ContaBancaria {
 		sb.append("Nome do cliente: " + cliente.getNomeCliente() + "\n");
 		sb.append("Numero da Conta: " + numeroConta + "\n");
 		sb.append("Numero da Agência: " + numeroAgencia + "\n");
-		sb.append("Saldo da Conta: " + String.format("%.2f", saldoConta) + "\n");
+		sb.append("Saldo da Conta: " + String.format("%.2f", saldoConta));
 		return sb.toString();
 	}
 

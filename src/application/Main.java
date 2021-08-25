@@ -1,7 +1,5 @@
 package application;
 
-import java.util.stream.Stream;
-
 import org.joda.time.LocalDate;
 import clientes.Cliente;
 import clientes.TipoCliente;
@@ -18,9 +16,9 @@ public class Main {
 		// Declaração de variáveis
 		String primeiraString = "Hello World";
 		String segundaString = new String("Hello World");
-		ContaCorrente contaCorrente[] = new ContaCorrente[7];
-		ContaPoupanca contaPoupanca[] = new ContaPoupanca[5];
-		ContaEmpresarial contaEmpresarial[] = new ContaEmpresarial[6];
+		ContaCorrente contaCorrenteArray = new ContaCorrente();
+		ContaPoupanca contaPoupancaArray = new ContaPoupanca();
+		ContaEmpresarial contaEmpresarialArray = new ContaEmpresarial();
 
 		// Instanciando objetos do tipo comparador
 		Comparador comparator = new Comparador();
@@ -108,17 +106,42 @@ public class Main {
 		verificaContasIguais(contaCorrente1, contaEmpresarial2);
 		verificaContasIguais(contaCorrente1, contaPoupanca4);
 
-		contaCorrente[0] = contaCorrente1;
-		contaCorrente[1] = contaCorrente2;
-		contaCorrente[2] = contaCorrente3;
-		contaCorrente[3] = contaCorrente4;
-		contaCorrente[4] = contaCorrente5;
-		contaCorrente[5] = contaCorrente6;
-		contaCorrente[6] = contaCorrente7;
-
-		imprimirQuantidadeElementosDoArray(contaCorrente);
-		imprimirOPrimeiroElementoDoArray(contaCorrente);
-		imprimirOUltimoElementoDoArray(contaCorrente);
+		contaCorrenteArray.adicionarElementosNoArray(contaCorrente1);
+		contaCorrenteArray.adicionarElementosNoArray(contaCorrente2);
+		contaCorrenteArray.adicionarElementosNoArray(contaCorrente3);
+		contaCorrenteArray.adicionarElementosNoArray(contaCorrente4);
+		contaCorrenteArray.adicionarElementosNoArray(contaCorrente5);
+		contaCorrenteArray.adicionarElementosNoArray(contaCorrente6);
+		contaCorrenteArray.adicionarElementosNoArray(contaCorrente7);
+		
+		contaCorrenteArray.imprimirOPrimeiroElementoDoArray();
+		contaCorrenteArray.imprimirOUltimoElementoDoArray();
+		contaCorrenteArray.imprimirQuantidadeElementosDoArray();
+		
+		
+		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca1);
+		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca2);
+		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca3);
+		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca4);
+		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca5);
+		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca6);
+		
+		contaPoupancaArray.imprimirOPrimeiroElementoDoArray();
+		contaPoupancaArray.imprimirOUltimoElementoDoArray();
+		contaPoupancaArray.imprimirQuantidadeElementosDoArray();
+		
+		
+		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial1);
+		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial2);
+		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial3);
+		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial4);
+		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial5);
+		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial6);
+		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial7);
+		
+		contaEmpresarialArray.imprimirOPrimeiroElementoDoArray();
+		contaEmpresarialArray.imprimirOUltimoElementoDoArray();
+		contaEmpresarialArray.imprimirQuantidadeElementosDoArray();
 
 	}
 
@@ -157,7 +180,7 @@ public class Main {
 		}
 	}
 
-	public static void imprimirQuantidadeElementosDoArray(ContaBancaria... conta) {
+	/*public static void imprimirQuantidadeElementosDoArray(ContaBancaria... conta) {
 
 		System.out.println("\nO Array possui " + Stream.of(conta).count() + " elementos \n");
 
@@ -173,5 +196,5 @@ public class Main {
 
 		Stream.of(conta).skip(conta.length - 1).forEach(System.out::println);
 
-	}
+	}*/
 }
