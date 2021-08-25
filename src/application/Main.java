@@ -91,21 +91,27 @@ public class Main {
 		ContaEmpresarial contaEmpresarial7 = new ContaEmpresarial(cliente20, "Magliano S.A", 113, 23856, 7562, 6352.76,
 				LocalDate.now(), "Nextel");
 
+		//Compara se os números passados como parâmetros são iguais
 		comparator.comparaNumeros(500, 500);
 		comparator.comparaNumeros(1000, 237);
 
+		// Método que verifica se duas strings são iguais utilizando o operador ==
 		comparator.comparaStringsUsandoIguais(primeiraString, segundaString);
 		comparator.comparaStringsUsandoIguais(primeiraString, "Hello World");
 
+		// Método que verifica se duas strings são iguais utilizando o método
+		// .equals
 		comparator.comparaStringsUsandoEquals(primeiraString, segundaString);
 		comparator.comparaStringsUsandoEquals(primeiraString, "Hello World.");
 
+		
 		verificaClientesIguais(cliente1, cliente2);
 		verificaClientesIguais(cliente1, cliente10);
 
 		verificaContasIguais(contaCorrente1, contaEmpresarial2);
 		verificaContasIguais(contaCorrente1, contaPoupanca4);
 
+		//Adicionando os elementos de conta corrente no respectivo array
 		contaCorrenteArray.adicionarElementosNoArray(contaCorrente1);
 		contaCorrenteArray.adicionarElementosNoArray(contaCorrente2);
 		contaCorrenteArray.adicionarElementosNoArray(contaCorrente3);
@@ -118,6 +124,7 @@ public class Main {
 		contaCorrenteArray.imprimirOUltimoElementoDoArray();
 		contaCorrenteArray.imprimirQuantidadeElementosDoArray();
 
+		//Adicionando os elementos de conta poupança no respectivo array
 		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca1);
 		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca2);
 		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca3);
@@ -129,6 +136,7 @@ public class Main {
 		contaPoupancaArray.imprimirOUltimoElementoDoArray();
 		contaPoupancaArray.imprimirQuantidadeElementosDoArray();
 
+		//Adicionando os elementos de conta empresarial no respectivo array
 		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial1);
 		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial2);
 		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial3);
