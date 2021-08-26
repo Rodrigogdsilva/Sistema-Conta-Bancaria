@@ -10,17 +10,9 @@ public class ContaPoupanca extends ContaBancaria {
 	private int rendimentoMensal;
 	private int descontoCarencia;
 	private int periodoCarencia;
-	private int contador;
-	private ContaPoupanca[] contaPoupancas = new ContaPoupanca[6];
-
 	Scanner scan = new Scanner(System.in);
 
 	// Construtores
-
-	public ContaPoupanca() {
-		super();
-	}
-
 	public ContaPoupanca(Cliente cliente, String nomeBanco, int codigoIdentificadorBanco, int numeroConta,
 			int numeroAgencia, double saldoConta, LocalDate dataAberturaConta, int rendimentoMensal,
 			int descontoCarencia, int periodoCarencia) {
@@ -72,15 +64,16 @@ public class ContaPoupanca extends ContaBancaria {
 	@Override
 	public void sacar(double valor) {
 
-		if ((LocalDate.now().getMonthOfYear() - super.getDataAberturaConta().getMonthOfYear()) >= periodoCarencia) {
+		int diferencaMeses = (LocalDate.now().getMonthOfYear() - super.getDataAberturaConta().getMonthOfYear());
+		int diferencaMesesPositivos = Math.abs(diferencaMeses);
 
+		if (diferencaMesesPositivos >= periodoCarencia) {
 			if ((LocalDate.now().getYear() - super.getDataAberturaConta().getYear()) >= 1) {
 				setSaldoConta(getSaldoConta() - valor);
 				System.out.println("Saque realizado com sucesso. \nSaldo atual: " + getSaldoConta());
 			}
 
-		} else if ((LocalDate.now().getMonthOfYear()
-				- super.getDataAberturaConta().getMonthOfYear()) < periodoCarencia) {
+		} else if ((diferencaMesesPositivos < periodoCarencia)) {
 
 			if ((LocalDate.now().getYear() - super.getDataAberturaConta().getYear()) < 1) {
 
@@ -109,7 +102,6 @@ public class ContaPoupanca extends ContaBancaria {
 
 					break;
 				}
-
 			}
 
 		} else {
@@ -118,39 +110,4 @@ public class ContaPoupanca extends ContaBancaria {
 
 		}
 	}
-
-	public void imprimirQuantidadeElementosDoArray() {
-
-		System.out.println("\nExistem " + contador + " elementos cadastradas no nosso sistema.");
-
-	}
-
-	public void adicionarElementosNoArray(ContaPoupanca conta) {
-		if (contador < contaPoupancas.length) {
-			contaPoupancas[contador] = conta;
-			contador++;
-		} else {
-			System.out.println("Capacidade máxima de armazenamento atingida, não é possível adicionar mais contas.");
-		}
-	}
-
-	public void imprimirOPrimeiroElementoDoArray() {
-
-		if (!(contaPoupancas[0].equals(null))) {
-			System.out.println("\n------------------------ ");
-			System.out.println(contaPoupancas[0]);
-			System.out.println("------------------------");
-		} else {
-			System.out.println("Não foi possível exibir. \nNão há contas cadastradas.");
-		}
-	}
-
-	public void imprimirOUltimoElementoDoArray() {
-
-		System.out.println("\n------------------------ ");
-		System.out.println(contaPoupancas[contador - 1]);
-		System.out.println("------------------------");
-
-	}
-
 }

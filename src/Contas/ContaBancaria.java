@@ -6,7 +6,6 @@ import clientes.Cliente;
 public abstract class ContaBancaria {
 
 	// Atributos
-
 	private Cliente cliente;
 	private String nomeBanco;
 	private int codigoIdentificadorBanco;
@@ -18,11 +17,6 @@ public abstract class ContaBancaria {
 	private String motivoFechamento;
 
 	// Construtores
-
-	public ContaBancaria() {
-
-	}
-
 	public ContaBancaria(Cliente cliente, String nomeBanco, int codigoIdentificadorBanco, int numeroConta,
 			int numeroAgencia, double saldoConta, LocalDate dataAberturaConta) {
 		this.cliente = cliente;
@@ -110,7 +104,7 @@ public abstract class ContaBancaria {
 	// Método para sacar valores
 	public void sacar(double valor) {
 
-		if (valor > saldoConta) {
+		if (saldoConta >= valor) {
 			saldoConta -= valor;
 
 		} else {
@@ -135,7 +129,7 @@ public abstract class ContaBancaria {
 
 	public void transferencia(ContaBancaria conta, double valor) {
 
-		if (getSaldoConta() >= valor) {
+		if (saldoConta >= valor) {
 
 			this.sacar(valor);
 
@@ -160,5 +154,4 @@ public abstract class ContaBancaria {
 		sb.append("Saldo da Conta: " + String.format("%.2f", saldoConta));
 		return sb.toString();
 	}
-
 }

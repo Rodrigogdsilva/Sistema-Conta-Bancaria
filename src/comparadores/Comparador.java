@@ -43,10 +43,10 @@ public class Comparador {
 	public boolean comparaStringsUsandoIguais(String primeiraString, String segundaString) {
 
 		if (primeiraString == segundaString) {
-			System.out.println("As Strings inseridas são iguais e possuem o mesmo local na memória");
+			System.out.println("As Strings inseridas são iguais e possuem o mesmo local na memória. \n");
 			return true;
 		} else {
-			System.out.println("As Strings inseridas são diferentes ou não possuem o mesmo local na memória");
+			System.out.println("As Strings inseridas são diferentes ou não possuem o mesmo local na memória. \n");
 			return false;
 		}
 	}
@@ -57,12 +57,12 @@ public class Comparador {
 
 		if (primeiraString.equals(segundaString)) {
 
-			System.out.println("O conteúdo das Strings inseridas é igual");
+			System.out.println("O conteúdo das Strings inseridas é igual. \n");
 			return true;
 
 		} else {
 
-			System.out.println("O conteúdo das Strings inseridas é diferente");
+			System.out.println("O conteúdo das Strings inseridas é diferente. \n");
 		}
 
 		return false;
@@ -72,10 +72,10 @@ public class Comparador {
 	public boolean comparaNumeros(int primeiroNumero, int segundoNumero) {
 
 		if (primeiroNumero == segundoNumero) {
-			System.out.println("Os números inseridos são iguais");
+			System.out.println("Os números " + primeiroNumero + " e " + segundoNumero + " são iguais. \n");
 			return true;
 		} else {
-			System.out.println("Os números inseridos são diferentes");
+			System.out.println("Os números " + primeiroNumero + " e " + segundoNumero + " são diferentes. \n");
 			return false;
 		}
 	}

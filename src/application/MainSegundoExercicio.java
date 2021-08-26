@@ -9,21 +9,17 @@ import contas.ContaCorrente;
 import contas.ContaEmpresarial;
 import contas.ContaPoupanca;
 
-public class Main {
+public class MainSegundoExercicio {
 
 	public static void main(String[] args) {
 
 		// Declaração de variáveis
 		String primeiraString = "Hello World";
 		String segundaString = new String("Hello World");
-		ContaCorrente contaCorrenteArray = new ContaCorrente();
-		ContaPoupanca contaPoupancaArray = new ContaPoupanca();
-		ContaEmpresarial contaEmpresarialArray = new ContaEmpresarial();
 
 		// Instanciando objetos do tipo comparador
 		Comparador comparator = new Comparador();
 
-		// Instanciando os clientes
 		Cliente cliente1 = new Cliente("Rodrigo", "111.111.111-11", 500, TipoCliente.SERVIDOR_PUBLICO);
 		Cliente cliente2 = new Cliente("José", "222.222.222-22", 300, TipoCliente.PESSOA_FISICA);
 		Cliente cliente3 = new Cliente("Julio Cesar", "333.333.333-33", 600, TipoCliente.SERVIDOR_PUBLICO);
@@ -91,11 +87,12 @@ public class Main {
 		ContaEmpresarial contaEmpresarial7 = new ContaEmpresarial(cliente20, "Magliano S.A", 113, 23856, 7562, 6352.76,
 				LocalDate.now(), "Nextel");
 
-		//Compara se os números passados como parâmetros são iguais
+		// Compara se os números passados como parâmetros são iguais
 		comparator.comparaNumeros(500, 500);
 		comparator.comparaNumeros(1000, 237);
 
-		// Método que verifica se duas strings são iguais utilizando o operador ==
+		// Método que verifica se duas strings são iguais utilizando o operador
+		// ==
 		comparator.comparaStringsUsandoIguais(primeiraString, segundaString);
 		comparator.comparaStringsUsandoIguais(primeiraString, "Hello World");
 
@@ -104,50 +101,11 @@ public class Main {
 		comparator.comparaStringsUsandoEquals(primeiraString, segundaString);
 		comparator.comparaStringsUsandoEquals(primeiraString, "Hello World.");
 
-		
 		verificaClientesIguais(cliente1, cliente2);
 		verificaClientesIguais(cliente1, cliente10);
 
 		verificaContasIguais(contaCorrente1, contaEmpresarial2);
 		verificaContasIguais(contaCorrente1, contaPoupanca4);
-
-		//Adicionando os elementos de conta corrente no respectivo array
-		contaCorrenteArray.adicionarElementosNoArray(contaCorrente1);
-		contaCorrenteArray.adicionarElementosNoArray(contaCorrente2);
-		contaCorrenteArray.adicionarElementosNoArray(contaCorrente3);
-		contaCorrenteArray.adicionarElementosNoArray(contaCorrente4);
-		contaCorrenteArray.adicionarElementosNoArray(contaCorrente5);
-		contaCorrenteArray.adicionarElementosNoArray(contaCorrente6);
-		contaCorrenteArray.adicionarElementosNoArray(contaCorrente7);
-
-		contaCorrenteArray.imprimirOPrimeiroElementoDoArray();
-		contaCorrenteArray.imprimirOUltimoElementoDoArray();
-		contaCorrenteArray.imprimirQuantidadeElementosDoArray();
-
-		//Adicionando os elementos de conta poupança no respectivo array
-		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca1);
-		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca2);
-		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca3);
-		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca4);
-		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca5);
-		contaPoupancaArray.adicionarElementosNoArray(contaPoupanca6);
-
-		contaPoupancaArray.imprimirOPrimeiroElementoDoArray();
-		contaPoupancaArray.imprimirOUltimoElementoDoArray();
-		contaPoupancaArray.imprimirQuantidadeElementosDoArray();
-
-		//Adicionando os elementos de conta empresarial no respectivo array
-		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial1);
-		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial2);
-		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial3);
-		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial4);
-		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial5);
-		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial6);
-		contaEmpresarialArray.adicionarElementosNoArray(contaEmpresarial7);
-
-		contaEmpresarialArray.imprimirOPrimeiroElementoDoArray();
-		contaEmpresarialArray.imprimirOUltimoElementoDoArray();
-		contaEmpresarialArray.imprimirQuantidadeElementosDoArray();
 
 	}
 
@@ -157,11 +115,11 @@ public class Main {
 
 		if (primeiroCliente.getNumeroDocCliente().equals(segundoCliente.getNumeroDocCliente())) {
 			System.out.println(
-					"Os dois clientes inseridos tratam-se da mesma pessoa, pois possuem o mesmo número de documento");
+					"Os dois clientes inseridos tratam-se da mesma pessoa, pois possuem o mesmo número de documento. \n");
 			return true;
 		} else {
 
-			System.out.println("Clientes distintos, números de documentos divergentes.");
+			System.out.println("Clientes distintos, números de documentos divergentes. \n");
 
 			return false;
 		}
@@ -175,38 +133,14 @@ public class Main {
 				&& (primeiraConta.getNumeroConta() == segundaConta.getNumeroConta())) {
 
 			System.out.println(
-					"As Contas Bancárias inseridas são iguais, pois possuem o mesmo número de agência e conta");
+					"As Contas Bancárias inseridas são iguais, pois possuem o mesmo número de agência e conta. \n");
 			return true;
 
 		} else {
 
-			System.out.println("Contas distintas, não possuem o mesmo número de agência e conta");
+			System.out.println("Contas distintas, não possuem o mesmo número de agência e conta. \n");
 			return false;
 
 		}
 	}
-
-	/*
-	 * public static void imprimirQuantidadeElementosDoArray(ContaBancaria...
-	 * conta) {
-	 * 
-	 * System.out.println("\nO Array possui " + Stream.of(conta).count() +
-	 * " elementos \n");
-	 * 
-	 * }
-	 * 
-	 * public static void imprimirOPrimeiroElementoDoArray(ContaBancaria...
-	 * conta) {
-	 * 
-	 * Stream.of(conta).limit(1).forEach(System.out::println);
-	 * 
-	 * }
-	 * 
-	 * public static void imprimirOUltimoElementoDoArray(ContaBancaria... conta)
-	 * {
-	 * 
-	 * Stream.of(conta).skip(conta.length - 1).forEach(System.out::println);
-	 * 
-	 * }
-	 */
 }
