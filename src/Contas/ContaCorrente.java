@@ -16,9 +16,10 @@ public class ContaCorrente extends ContaBancaria {
 
 	// Construtores
 	public ContaCorrente(Cliente cliente, String nomeBanco, String codigoIdentificadorBanco, String numeroConta,
-			String numeroAgencia, double saldoConta, LocalDate dataAberturaConta, int quantidadeMaximaSaques,
-			int quantidadeMaximaTransferencias) {
-		super(cliente, nomeBanco, codigoIdentificadorBanco, numeroConta, numeroAgencia, saldoConta, dataAberturaConta);
+			String numeroAgencia, double saldoConta, LocalDate dataAberturaConta, LocalDate dataFechamentoConta,
+			String motivoFechamento, int quantidadeMaximaSaques, int quantidadeMaximaTransferencias) {
+		super(cliente, nomeBanco, codigoIdentificadorBanco, numeroConta, numeroAgencia, saldoConta, dataAberturaConta,
+				dataFechamentoConta, motivoFechamento);
 		this.quantidadeMaximaSaques = quantidadeMaximaSaques;
 		this.quantidadeMaximaTransferencias = quantidadeMaximaTransferencias;
 	}

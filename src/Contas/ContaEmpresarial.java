@@ -10,8 +10,10 @@ public class ContaEmpresarial extends ContaBancaria {
 
 	// Construtores
 	public ContaEmpresarial(Cliente cliente, String nomeBanco, String codigoIdentificadorBanco, String numeroConta,
-			String numeroAgencia, double saldoConta, LocalDate dataAberturaConta, String nomeEmpresa) {
-		super(cliente, nomeBanco, codigoIdentificadorBanco, numeroConta, numeroAgencia, saldoConta, dataAberturaConta);
+			String numeroAgencia, double saldoConta, LocalDate dataAberturaConta, LocalDate dataFechamentoConta,
+			String motivoFechamento, String nomeEmpresa) {
+		super(cliente, nomeBanco, codigoIdentificadorBanco, numeroConta, numeroAgencia, saldoConta, dataAberturaConta,
+				dataFechamentoConta, motivoFechamento);
 		this.nomeEmpresa = nomeEmpresa;
 	}
 

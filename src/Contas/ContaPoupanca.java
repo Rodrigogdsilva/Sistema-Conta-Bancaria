@@ -14,9 +14,10 @@ public class ContaPoupanca extends ContaBancaria {
 
 	// Construtores
 	public ContaPoupanca(Cliente cliente, String nomeBanco, String codigoIdentificadorBanco, String numeroConta,
-			String numeroAgencia, double saldoConta, LocalDate dataAberturaConta, int rendimentoMensal,
-			int descontoCarencia, int periodoCarencia) {
-		super(cliente, nomeBanco, codigoIdentificadorBanco, numeroConta, numeroAgencia, saldoConta, dataAberturaConta);
+			String numeroAgencia, double saldoConta, LocalDate dataAberturaConta, LocalDate dataFechamentoConta,
+			String motivoFechamento, int rendimentoMensal, int descontoCarencia, int periodoCarencia) {
+		super(cliente, nomeBanco, codigoIdentificadorBanco, numeroConta, numeroAgencia, saldoConta, dataAberturaConta,
+				dataFechamentoConta, motivoFechamento);
 		this.rendimentoMensal = rendimentoMensal;
 		this.descontoCarencia = descontoCarencia;
 		this.periodoCarencia = periodoCarencia;
