@@ -43,7 +43,7 @@ public class Comparador {
 	public boolean comparaStringsUsandoIguais(String primeiraString, String segundaString) {
 
 		if (primeiraString == segundaString) {
-			System.out.println("As Strings inseridas são iguais e possuem o mesmo local na memória. \n");
+			System.out.println("As Strings inseridas não possuem o mesmo local na memória. \n");
 			return true;
 		} else {
 			System.out.println("As Strings inseridas são diferentes ou não possuem o mesmo local na memória. \n");

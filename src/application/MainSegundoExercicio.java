@@ -42,64 +42,64 @@ public class MainSegundoExercicio {
 		Cliente cliente20 = new Cliente("Márcia", "111.111.111-21", 621, TipoCliente.PESSOA_JURIDICA);
 
 		// Instanciando objetos do tipo Conta Corrente
-		ContaCorrente contaCorrente1 = new ContaCorrente(cliente1, "Itaú", 341, 11111, 1111, 1000.00, LocalDate.now(),
-				5, 4);
+		ContaCorrente contaCorrente1 = new ContaCorrente(cliente1, "Itaú", 341, 11111, 1111, 1000.00,
+				LocalDate.parse("2008-02-07"), 5, 4);
 		ContaCorrente contaCorrente2 = new ContaCorrente(cliente2, "Santander", 033, 22222, 2222, 500.00,
-				LocalDate.now(), 10, 8);
+				LocalDate.parse("2015-04-08"), 10, 8);
 		ContaCorrente contaCorrente3 = new ContaCorrente(cliente3, "Original", 212, 33333, 3333, 1700.00,
-				LocalDate.now(), 4, 3);
+				LocalDate.parse("2013-02-09"), 4, 3);
 		ContaCorrente contaCorrente4 = new ContaCorrente(cliente10, "Cooperativo Sicredi S.A.", 748, 11119, 1111, 74.00,
-				LocalDate.now(), 6, 2);
+				LocalDate.parse("2012-09-20"), 6, 2);
 		ContaCorrente contaCorrente5 = new ContaCorrente(cliente11, "Agibank S.A.", 121, 12347, 5206, 864.00,
-				LocalDate.now(), 3, 3);
+				LocalDate.parse("2006-01-30"), 3, 3);
 		ContaCorrente contaCorrente6 = new ContaCorrente(cliente12, "BMG S.A.", 318, 96572, 3209, 5327.65,
-				LocalDate.now(), 10, 7);
+				LocalDate.parse("2001-12-24"), 10, 7);
 		ContaCorrente contaCorrente7 = new ContaCorrente(cliente13, "Cargill S.A", 040, 32687, 3685, 3561.96,
-				LocalDate.now(), 6, 4);
+				LocalDate.parse("2012-01-02"), 6, 4);
 
 		// Instanciando objetos do tipo Conta Corrente
 		ContaPoupanca contaPoupanca1 = new ContaPoupanca(cliente4, "Banco do Brasil", 756, 44444, 4444, 3400.00,
-				LocalDate.now(), 150, 135, 1);
+				LocalDate.parse("2002-09-30"), 150, 135, 1);
 		ContaPoupanca contaPoupanca2 = new ContaPoupanca(cliente5, "Votorantim", 655, 55555, 5555, 1238.75,
-				LocalDate.now(), 300, 200, 2);
+				LocalDate.parse("2017-09-12"), 300, 200, 2);
 		ContaPoupanca contaPoupanca3 = new ContaPoupanca(cliente6, "Bradesco S.A", 237, 66666, 6666, 357.79,
-				LocalDate.now(), 127, 50, 3);
-		ContaPoupanca contaPoupanca4 = new ContaPoupanca(cliente14, "Itaú", 341, 11111, 1111, 1000.00, LocalDate.now(),
-				300, 75, 4);
+				LocalDate.parse("2016-12-01"), 127, 50, 3);
+		ContaPoupanca contaPoupanca4 = new ContaPoupanca(cliente14, "Itaú", 341, 11111, 1111, 1000.00,
+				LocalDate.parse("2015-05-02"), 300, 75, 4);
 		ContaPoupanca contaPoupanca5 = new ContaPoupanca(cliente15, "Citibank S.A.", 745, 83647, 2196, 7462.99,
-				LocalDate.now(), 247, 400, 2);
+				LocalDate.parse("2012-11-12"), 247, 400, 2);
 		ContaPoupanca contaPoupanca6 = new ContaPoupanca(cliente16, "Daycoval S.A.", 707, 85324, 3695, 2534.50,
-				LocalDate.now(), 500, 1000, 6);
+				LocalDate.parse("2014-01-12"), 500, 1000, 6);
 
 		// Instanciando objetos do tipo Conta Empresarial
 		ContaEmpresarial contaEmpresarial1 = new ContaEmpresarial(cliente7, "Inter S.A", 077, 77777, 7777, 1103.03,
-				LocalDate.now(), "Ambev");
+				LocalDate.parse("2010-11-28"), "Ambev");
 		ContaEmpresarial contaEmpresarial2 = new ContaEmpresarial(cliente8, "Caixa Econômica Federal", 104, 88888, 8888,
-				135.01, LocalDate.now(), "JBS");
+				135.01, LocalDate.parse("2013-05-22"), "JBS");
 		ContaEmpresarial contaEmpresarial3 = new ContaEmpresarial(cliente9, "Banco Safra S.A", 422, 99999, 9999,
-				4922.01, LocalDate.now(), "TAM");
+				4922.01, LocalDate.parse("2007-08-17"), "TAM");
 		ContaEmpresarial contaEmpresarial4 = new ContaEmpresarial(cliente17, "Smartbank S.A.", 630, 86254, 6358,
-				9838.22, LocalDate.now(), "Pão de Açúcar");
+				9838.22, LocalDate.parse("2017-05-28"), "Pão de Açúcar");
 		ContaEmpresarial contaEmpresarial5 = new ContaEmpresarial(cliente18, "Western Union do Brasil S.A.", 119, 83265,
-				1865, 15025.72, LocalDate.now(), "Microsoft");
+				1865, 15025.72, LocalDate.parse("2020-01-13"), "Microsoft");
 		ContaEmpresarial contaEmpresarial6 = new ContaEmpresarial(cliente19, "Xp S/A", 348, 36825, 9352, 7563.81,
-				LocalDate.now(), "Sabesp");
+				LocalDate.parse("2018-07-22"), "Sabesp");
 		ContaEmpresarial contaEmpresarial7 = new ContaEmpresarial(cliente20, "Magliano S.A", 113, 23856, 7562, 6352.76,
-				LocalDate.now(), "Nextel");
+				LocalDate.parse("2019-06-17"), "Nextel");
 
 		// Compara se os números passados como parâmetros são iguais
-		comparator.comparaNumeros(500, 500);
-		comparator.comparaNumeros(1000, 237);
+		//comparator.comparaNumeros(500, 500);
+		//comparator.comparaNumeros(1000, 237);
 
 		// Método que verifica se duas strings são iguais utilizando o operador
 		// ==
-		comparator.comparaStringsUsandoIguais(primeiraString, segundaString);
-		comparator.comparaStringsUsandoIguais(primeiraString, "Hello World");
+		//comparator.comparaStringsUsandoIguais(primeiraString, segundaString);
+		//comparator.comparaStringsUsandoIguais(primeiraString, "Hello World");
 
 		// Método que verifica se duas strings são iguais utilizando o método
 		// .equals
-		comparator.comparaStringsUsandoEquals(primeiraString, segundaString);
-		comparator.comparaStringsUsandoEquals(primeiraString, "Hello World.");
+		//comparator.comparaStringsUsandoEquals(primeiraString, segundaString);
+		//comparator.comparaStringsUsandoEquals(primeiraString, "Hello World.");
 
 		verificaClientesIguais(cliente1, cliente2);
 		verificaClientesIguais(cliente1, cliente10);

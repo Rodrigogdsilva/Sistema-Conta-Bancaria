@@ -13,8 +13,8 @@ public class ContaPoupanca extends ContaBancaria {
 	Scanner scan = new Scanner(System.in);
 
 	// Construtores
-	public ContaPoupanca(Cliente cliente, String nomeBanco, int codigoIdentificadorBanco, int numeroConta,
-			int numeroAgencia, double saldoConta, LocalDate dataAberturaConta, int rendimentoMensal,
+	public ContaPoupanca(Cliente cliente, String nomeBanco, String codigoIdentificadorBanco, String numeroConta,
+			String numeroAgencia, double saldoConta, LocalDate dataAberturaConta, int rendimentoMensal,
 			int descontoCarencia, int periodoCarencia) {
 		super(cliente, nomeBanco, codigoIdentificadorBanco, numeroConta, numeroAgencia, saldoConta, dataAberturaConta);
 		this.rendimentoMensal = rendimentoMensal;

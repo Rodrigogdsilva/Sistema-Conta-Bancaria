@@ -8,17 +8,17 @@ public abstract class ContaBancaria {
 	// Atributos
 	private Cliente cliente;
 	private String nomeBanco;
-	private int codigoIdentificadorBanco;
-	private int numeroConta;
-	private int numeroAgencia;
+	private String codigoIdentificadorBanco;
+	private String numeroConta;
+	private String numeroAgencia;
 	private double saldoConta;
 	private LocalDate dataAberturaConta;
 	private LocalDate dataFechamentoConta;
 	private String motivoFechamento;
 
 	// Construtores
-	public ContaBancaria(Cliente cliente, String nomeBanco, int codigoIdentificadorBanco, int numeroConta,
-			int numeroAgencia, double saldoConta, LocalDate dataAberturaConta) {
+	public ContaBancaria(Cliente cliente, String nomeBanco, String codigoIdentificadorBanco, String numeroConta,
+			String numeroAgencia, double saldoConta, LocalDate dataAberturaConta) {
 		this.cliente = cliente;
 		this.nomeBanco = nomeBanco;
 		this.codigoIdentificadorBanco = codigoIdentificadorBanco;
@@ -37,27 +37,27 @@ public abstract class ContaBancaria {
 		this.nomeBanco = nomeBanco;
 	}
 
-	public int getCodigoIdentificadorBanco() {
+	public String getCodigoIdentificadorBanco() {
 		return codigoIdentificadorBanco;
 	}
 
-	public void setCodigoIdentificadorBanco(int codigoIdentificadorBanco) {
+	public void setCodigoIdentificadorBanco(String codigoIdentificadorBanco) {
 		this.codigoIdentificadorBanco = codigoIdentificadorBanco;
 	}
 
-	public int getNumeroConta() {
+	public String getNumeroConta() {
 		return numeroConta;
 	}
 
-	public void setNumeroConta(int numeroConta) {
+	public void setNumeroConta(String numeroConta) {
 		this.numeroConta = numeroConta;
 	}
 
-	public int getNumeroAgencia() {
+	public String getNumeroAgencia() {
 		return numeroAgencia;
 	}
 
-	public void setNumeroAgencia(int numeroAgencia) {
+	public void setNumeroAgencia(String numeroAgencia) {
 		this.numeroAgencia = numeroAgencia;
 	}
 
@@ -154,4 +154,36 @@ public abstract class ContaBancaria {
 		sb.append("Saldo da Conta: " + String.format("%.2f", saldoConta));
 		return sb.toString();
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((numeroAgencia == null) ? 0 : numeroAgencia.hashCode());
+		result = prime * result + ((numeroConta == null) ? 0 : numeroConta.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ContaBancaria other = (ContaBancaria) obj;
+		if (numeroAgencia == null) {
+			if (other.numeroAgencia != null)
+				return false;
+		} else if (!numeroAgencia.equals(other.numeroAgencia))
+			return false;
+		if (numeroConta == null) {
+			if (other.numeroConta != null)
+				return false;
+		} else if (!numeroConta.equals(other.numeroConta))
+			return false;
+		return true;
+	}
+	
 }

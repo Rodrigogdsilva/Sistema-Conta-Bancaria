@@ -15,8 +15,8 @@ public class ContaCorrente extends ContaBancaria {
 	Scanner scan = new Scanner(System.in);
 
 	// Construtores
-	public ContaCorrente(Cliente cliente, String nomeBanco, int codigoIdentificadorBanco, int numeroConta,
-			int numeroAgencia, double saldoConta, LocalDate dataAberturaConta, int quantidadeMaximaSaques,
+	public ContaCorrente(Cliente cliente, String nomeBanco, String codigoIdentificadorBanco, String numeroConta,
+			String numeroAgencia, double saldoConta, LocalDate dataAberturaConta, int quantidadeMaximaSaques,
 			int quantidadeMaximaTransferencias) {
 		super(cliente, nomeBanco, codigoIdentificadorBanco, numeroConta, numeroAgencia, saldoConta, dataAberturaConta);
 		this.quantidadeMaximaSaques = quantidadeMaximaSaques;
