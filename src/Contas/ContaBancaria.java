@@ -173,6 +173,15 @@ public abstract class ContaBancaria {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((numeroAgencia == null) ? 0 : numeroAgencia.hashCode());
+		result = prime * result + ((numeroConta == null) ? 0 : numeroConta.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;

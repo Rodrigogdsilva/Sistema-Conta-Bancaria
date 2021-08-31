@@ -1,7 +1,7 @@
 package clientes;
 
 public class Cliente {
-	
+
 	private String nomeCliente;
 	private String numeroDocCliente;
 	private String scoreCliente;
@@ -45,6 +45,14 @@ public class Cliente {
 
 	public void setTipoCliente(TipoCliente tipoCliente) {
 		this.tipoCliente = tipoCliente;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((numeroDocCliente == null) ? 0 : numeroDocCliente.hashCode());
+		return result;
 	}
 
 	@Override
