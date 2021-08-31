@@ -107,20 +107,30 @@ public abstract class ContaBancaria {
 	// Método para sacar valores
 	public void sacar(double valor) {
 
-		if (saldoConta >= valor) {
-			saldoConta -= valor;
+		if (motivoFechamento == null) {
 
+			if (saldoConta >= valor) {
+				saldoConta -= valor;
+
+			} else {
+
+				System.out.println("Impossível realizar a transação!! \nSaldo insuficiente para saque, a mesma possui: "
+						+ saldoConta + " de saldo.");
+			}
 		} else {
-
-			System.out.println("Impossível realizar a transação!! \nSaldo insuficiente para saque, a mesma possui: "
-					+ saldoConta + " de saldo.");
+			System.out.println("Conta encerrada, não é possível fazer qualquer tipo de transação.");
 		}
 	}
 
 	// Método para depositar valores na conta
 	public void deposito(double valor) {
-		saldoConta += valor;
-		System.out.println(verificarSaldo());
+
+		if (motivoFechamento == null) {
+			saldoConta += valor;
+			System.out.println(verificarSaldo());
+		} else {
+			System.out.println("Conta encerrada, não é possível fazer qualquer tipo de transação.");
+		}
 	}
 
 	// Verifica o saldo da conta
@@ -132,17 +142,21 @@ public abstract class ContaBancaria {
 
 	public void transferencia(ContaBancaria conta, double valor) {
 
-		if (saldoConta >= valor) {
+		if (motivoFechamento == null) {
+			if (saldoConta >= valor) {
 
-			this.sacar(valor);
+				this.sacar(valor);
 
-			conta.deposito(valor);
+				conta.deposito(valor);
 
-			System.out.println("Transferencia realizada com sucesso.");
+				System.out.println("Transferencia realizada com sucesso.");
 
+			} else {
+
+				System.out.println("Não há saldo suficiente para efetuar a transferência");
+			}
 		} else {
-
-			System.out.println("Não há saldo suficiente para efetuar a transferência");
+			System.out.println("Conta encerrada, não é possível fazer qualquer tipo de transação.");
 		}
 	}
 

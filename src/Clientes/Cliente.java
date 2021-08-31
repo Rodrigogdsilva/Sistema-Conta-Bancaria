@@ -1,7 +1,7 @@
 package clientes;
 
 public class Cliente {
-
+	
 	private String nomeCliente;
 	private String numeroDocCliente;
 	private String scoreCliente;

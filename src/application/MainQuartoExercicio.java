@@ -1,23 +1,21 @@
 package application;
 
 import org.joda.time.LocalDate;
+
 import clientes.Cliente;
 import clientes.TipoCliente;
-import comparadores.Comparador;
+import contas.ContaBancaria;
 import contas.ContaCorrente;
 import contas.ContaEmpresarial;
 import contas.ContaPoupanca;
 
-public class MainSegundoExercicio {
+public class MainQuartoExercicio {
+
+	static int contadorArray;
+
+	static ContaBancaria[] bancarias = new ContaBancaria[20];
 
 	public static void main(String[] args) {
-
-		// Declaração de variáveis
-		String primeiraString = "Hello World";
-		String segundaString = new String("Hello World");
-
-		// Instanciando objetos do tipo comparador
-		Comparador comparator = new Comparador();
 
 		Cliente cliente1 = new Cliente("Rodrigo", "111.111.111-11", "500", TipoCliente.SERVIDOR_PUBLICO);
 		Cliente cliente2 = new Cliente("José", "222.222.222-22", "300", TipoCliente.PESSOA_FISICA);
@@ -86,31 +84,64 @@ public class MainSegundoExercicio {
 		ContaEmpresarial contaEmpresarial7 = new ContaEmpresarial(cliente20, "Magliano S.A", "113", "23856", "7562",
 				6352.76, LocalDate.parse("2019-06-17"), LocalDate.parse("2018-02-11"), "Falência da Empresa", "Nextel");
 
-		// Compara se os números passados como parâmetros são iguais
-		comparator.comparaNumeros(500, 500);
-		comparator.comparaNumeros(1000, 237);
+		adicionarElementosNoArrayConta(contaCorrente1);
+		adicionarElementosNoArrayConta(contaCorrente2);
+		adicionarElementosNoArrayConta(contaCorrente3);
+		adicionarElementosNoArrayConta(contaCorrente4);
+		adicionarElementosNoArrayConta(contaCorrente5);
+		adicionarElementosNoArrayConta(contaCorrente6);
+		adicionarElementosNoArrayConta(contaCorrente7);
+		adicionarElementosNoArrayConta(contaPoupanca1);
+		adicionarElementosNoArrayConta(contaPoupanca2);
+		adicionarElementosNoArrayConta(contaPoupanca3);
+		adicionarElementosNoArrayConta(contaPoupanca4);
+		adicionarElementosNoArrayConta(contaPoupanca5);
+		adicionarElementosNoArrayConta(contaPoupanca6);
+		adicionarElementosNoArrayConta(contaEmpresarial1);
+		adicionarElementosNoArrayConta(contaEmpresarial2);
+		adicionarElementosNoArrayConta(contaEmpresarial3);
+		adicionarElementosNoArrayConta(contaEmpresarial4);
+		adicionarElementosNoArrayConta(contaEmpresarial5);
+		adicionarElementosNoArrayConta(contaEmpresarial6);
+		adicionarElementosNoArrayConta(contaEmpresarial7);
 
-		// Método que verifica se duas strings são iguais utilizando o operador
-		// ==
-		comparator.comparaStringsUsandoIguais(primeiraString, segundaString);
-		comparator.comparaStringsUsandoIguais(primeiraString, "Hello World");
+		imprimirOPrimeiroElementoDoArrayConta();
+		imprimirOUltimoElementoDoArrayConta();
+		imprimirQuantidadeElementosDoArrayConta();
+	}
 
-		// Método que verifica se duas strings são iguais utilizando o método
-		// .equals
-		comparator.comparaStringsUsandoEquals(primeiraString, segundaString);
-		comparator.comparaStringsUsandoEquals(primeiraString, "Hello World.");
+	// Métodos de manipulação de array da Conta
+	public static void adicionarElementosNoArrayConta(ContaBancaria conta) {
+		if (contadorArray < bancarias.length) {
+			bancarias[contadorArray] = conta;
+			contadorArray++;
+		} else {
+			System.out.println("Capacidade máxima de armazenamento atingida, não é possível adicionar mais contas.");
+		}
+	}
 
-		// Clientes iguais
-		cliente1.equals(cliente10);
+	public static void imprimirQuantidadeElementosDoArrayConta() {
 
-		// Clientes diferentes
-		cliente1.equals(cliente15);
+		System.out.println("\nExistem " + contadorArray + " elementos cadastradas no nosso sistema.");
 
-		// Contas iguais
-		contaCorrente1.equals(contaCorrente6);
+	}
 
-		// Contas diferentes
-		contaCorrente1.equals(contaCorrente3);
+	public static void imprimirOPrimeiroElementoDoArrayConta() {
+
+		if (bancarias[0] != null) {
+			System.out.println("\n------------------------ ");
+			System.out.println(bancarias[0]);
+			System.out.println("------------------------");
+		} else {
+			System.out.println("Não foi possível exibir. \nNão há contas cadastradas.");
+		}
+	}
+
+	public static void imprimirOUltimoElementoDoArrayConta() {
+
+		System.out.println("\n------------------------ ");
+		System.out.println(bancarias[contadorArray - 1]);
+		System.out.println("------------------------");
 
 	}
 

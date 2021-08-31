@@ -57,51 +57,57 @@ public class ContaCorrente extends ContaBancaria {
 	@Override
 	public void sacar(double valor) {
 
-		// Caso o valor do saque seja menor que o saldo da conta e a quantidade
-		// de saques seja menor que 4
-		if (valor <= getSaldoConta() && quantidadeSaques < quantidadeMaximaSaques) {
-
-			setSaldoConta(getSaldoConta() - valor);
-
-			quantidadeSaques++;
-
-			System.out.println("Saque realizado com sucesso! \nNovo Saldo: " + getSaldoConta());
+		if (getMotivoFechamento() == null) {
 
 			// Caso o valor do saque seja menor que o saldo da conta e a
-			// quantidade de saques seja maior que 4
-		} else if (valor <= getSaldoConta() && quantidadeSaques >= quantidadeMaximaSaques) {
+			// quantidade
+			// de saques seja menor que 4
+			if (valor <= getSaldoConta() && quantidadeSaques < quantidadeMaximaSaques) {
 
-			int operacao;
-
-			System.out.println(
-					"Devido a quantidade de saques mensais excedidos, serão cobrados R$ 5,00 adicionais sobre o valor do saque");
-			System.out.println("Deseja realizar a operação? \n1 - Sim \n2 - Não");
-			operacao = scan.nextInt();
-
-			switch (operacao) {
-
-			case 1:
-
-				setSaldoConta(getSaldoConta() - (valor + 5));
+				setSaldoConta(getSaldoConta() - valor);
 
 				quantidadeSaques++;
 
 				System.out.println("Saque realizado com sucesso! \nNovo Saldo: " + getSaldoConta());
 
-				break;
+				// Caso o valor do saque seja menor que o saldo da conta e a
+				// quantidade de saques seja maior que 4
+			} else if (valor <= getSaldoConta() && quantidadeSaques >= quantidadeMaximaSaques) {
 
-			case 2:
+				int operacao;
 
-				System.out.println("Operação cancelada conforme solicitado pelo usuário");
+				System.out.println(
+						"Devido a quantidade de saques mensais excedidos, serão cobrados R$ 5,00 adicionais sobre o valor do saque");
+				System.out.println("Deseja realizar a operação? \n1 - Sim \n2 - Não");
+				operacao = scan.nextInt();
 
-				break;
+				switch (operacao) {
+
+				case 1:
+
+					setSaldoConta(getSaldoConta() - (valor + 5));
+
+					quantidadeSaques++;
+
+					System.out.println("Saque realizado com sucesso! \nNovo Saldo: " + getSaldoConta());
+
+					break;
+
+				case 2:
+
+					System.out.println("Operação cancelada conforme solicitado pelo usuário");
+
+					break;
+				}
+
+				// Caso o valor do saque seja maior que o valor da conta
+			} else {
+
+				System.out.println("Impossível realizar a transação!! \nSaldo insuficiente para saque, a mesma possui: "
+						+ getSaldoConta() + " de saldo.");
 			}
-
-			// Caso o valor do saque seja maior que o valor da conta
 		} else {
-
-			System.out.println("Impossível realizar a transação!! \nSaldo insuficiente para saque, a mesma possui: "
-					+ getSaldoConta() + " de saldo.");
+			System.out.println("Conta encerrada, não é possível fazer qualquer tipo de transação.");
 		}
 	}
 
@@ -109,9 +115,14 @@ public class ContaCorrente extends ContaBancaria {
 	// 13,9 relacionado a tarifa bancária
 	public void calcularSaldoComDesconto() {
 
-		if (getDataAberturaConta().getDayOfMonth() == LocalDate.now().getDayOfMonth()) {
-			setSaldoConta(getSaldoConta() - desconto);
-			System.out.println(getSaldoConta());
+		if (getMotivoFechamento() == null) {
+
+			if (getDataAberturaConta().getDayOfMonth() == LocalDate.now().getDayOfMonth()) {
+				setSaldoConta(getSaldoConta() - desconto);
+				System.out.println(getSaldoConta());
+			}
+		} else {
+			System.out.println("Conta encerrada, não é possível fazer qualquer tipo de transação.");
 		}
 	}
 
@@ -120,48 +131,53 @@ public class ContaCorrente extends ContaBancaria {
 	@Override
 	public void transferencia(ContaBancaria conta, double valor) {
 
-		if (valor <= getSaldoConta() && quantidadeTransferencias < quantidadeMaximaTransferencias) {
+		if (getMotivoFechamento() == null) {
 
-			this.sacar(valor);
+			if (valor <= getSaldoConta() && quantidadeTransferencias < quantidadeMaximaTransferencias) {
 
-			conta.deposito(valor);
+				this.sacar(valor);
 
-			System.out.println("Transferencia realizada com sucesso.");
+				conta.deposito(valor);
 
-			quantidadeTransferencias++;
+				System.out.println("Transferencia realizada com sucesso.");
 
-		} else if (getSaldoConta() <= valor && quantidadeTransferencias >= quantidadeMaximaTransferencias) {
+				quantidadeTransferencias++;
 
-			int operacao;
+			} else if (getSaldoConta() <= valor && quantidadeTransferencias >= quantidadeMaximaTransferencias) {
 
-			System.out.println(
-					"Devido a quantidade de transferências mensais excedidas, será cobrado R$ 5,00 a mais sobre o valor do saque");
-			System.out.println("Deseja realizar a operação? \n1- Sim \n2- Não");
-			operacao = scan.nextInt();
+				int operacao;
 
-			switch (operacao) {
+				System.out.println(
+						"Devido a quantidade de transferências mensais excedidas, será cobrado R$ 5,00 a mais sobre o valor do saque");
+				System.out.println("Deseja realizar a operação? \n1- Sim \n2- Não");
+				operacao = scan.nextInt();
 
-			case 1:
+				switch (operacao) {
 
-				setSaldoConta(getSaldoConta() - (valor + 5));
+				case 1:
 
-				quantidadeSaques++;
+					setSaldoConta(getSaldoConta() - (valor + 5));
 
-				System.out.println("Transferência realizada com sucesso! \nNovo Saldo: " + getSaldoConta());
+					quantidadeSaques++;
 
-				break;
+					System.out.println("Transferência realizada com sucesso! \nNovo Saldo: " + getSaldoConta());
 
-			case 2:
+					break;
 
-				System.out.println("Operação cancelada conforme solicitado pelo usuário");
+				case 2:
 
-				break;
+					System.out.println("Operação cancelada conforme solicitado pelo usuário");
+
+					break;
+				}
+
+			} else {
+
+				System.out.println("Não há saldo suficiente para efetuar a transferência");
+
 			}
-
 		} else {
-
-			System.out.println("Não há saldo suficiente para efetuar a transferência");
-
+			System.out.println("Conta encerrada, não é possível fazer qualquer tipo de transação.");
 		}
 	}
 }
