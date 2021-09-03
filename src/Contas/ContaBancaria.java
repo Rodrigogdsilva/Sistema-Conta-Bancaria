@@ -3,7 +3,7 @@ package contas;
 import org.joda.time.LocalDate;
 import clientes.Cliente;
 
-public abstract class ContaBancaria {
+public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 
 	// Atributos
 	private Cliente cliente;
@@ -166,9 +166,9 @@ public abstract class ContaBancaria {
 		sb.append("Nome do Banco: " + nomeBanco + "\n");
 		sb.append("Código Identificador: " + codigoIdentificadorBanco + "\n");
 		sb.append("Nome do cliente: " + cliente.getNomeCliente() + "\n");
-		sb.append("Numero da Conta: " + numeroConta + "\n");
 		sb.append("Numero da Agência: " + numeroAgencia + "\n");
-		sb.append("Saldo da Conta: " + String.format("%.2f", saldoConta));
+		sb.append("Numero da Conta: " + numeroConta + "\n");
+		sb.append("Saldo da Conta: " + String.format("%.2f", saldoConta) + "\n");
 		return sb.toString();
 	}
 
@@ -184,13 +184,13 @@ public abstract class ContaBancaria {
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
+
 			return true;
 		}
 		if (obj == null) {
 			return false;
 		}
 		if (getClass() != obj.getClass()) {
-			System.out.println("Objetos de classes diferentes, não é possível efetuar a verificação");
 			return false;
 		}
 		ContaBancaria other = (ContaBancaria) obj;
@@ -201,7 +201,7 @@ public abstract class ContaBancaria {
 			return false;
 
 		} else if (!numeroAgencia.equals(other.numeroAgencia)) {
-			System.out.println("Contas distintas, não possuem o mesmo número agência. \n");
+
 			return false;
 		}
 		if (numeroConta == null) {
@@ -214,8 +214,30 @@ public abstract class ContaBancaria {
 			System.out.println("Contas distintas, não possuem o mesmo número conta. \n");
 			return false;
 		}
-		System.out.println(
-				"As Contas Bancárias inseridas são iguais, pois possuem o mesmo número de agência e conta. \n");
 		return true;
+	}
+
+	public int compareTo(ContaBancaria conta) {
+		if (Integer.parseInt(this.numeroConta) < Integer.parseInt(conta.numeroConta)) {
+			if (Integer.parseInt(this.numeroAgencia) < Integer.parseInt(conta.numeroAgencia)) {
+				return -1;
+			}
+		}
+			if (Integer.parseInt(this.numeroConta) < Integer.parseInt(conta.numeroConta)) {
+				if (Integer.parseInt(this.numeroAgencia) > Integer.parseInt(conta.numeroAgencia)) {
+					return 1;
+				}
+			}
+		if (Integer.parseInt(this.numeroConta) > Integer.parseInt(conta.numeroConta)) {
+			if (Integer.parseInt(this.numeroAgencia) > Integer.parseInt(conta.numeroAgencia)) {
+				return 1;
+			}
+		}
+		if (Integer.parseInt(this.numeroConta) > Integer.parseInt(conta.numeroConta)) {
+			if (Integer.parseInt(this.numeroAgencia) < Integer.parseInt(conta.numeroAgencia)) {
+				return -1;
+			}
+		}
+		return 0;
 	}
 }

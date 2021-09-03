@@ -181,4 +181,29 @@ public class ContaCorrente extends ContaBancaria {
 		}
 	}
 
+	@Override
+	public int compareTo(ContaBancaria conta) {
+		if (Integer.parseInt(this.getNumeroConta()) < Integer.parseInt(conta.getNumeroConta())) {
+			if (Integer.parseInt(this.getNumeroAgencia()) < Integer.parseInt(conta.getNumeroAgencia())) {
+				return -1;
+			}
+		}
+			if (Integer.parseInt(this.getNumeroConta()) < Integer.parseInt(conta.getNumeroConta())) {
+				if (Integer.parseInt(this.getNumeroAgencia()) > Integer.parseInt(conta.getNumeroAgencia())) {
+					return 1;
+				}
+			}
+		if (Integer.parseInt(this.getNumeroConta()) > Integer.parseInt(conta.getNumeroConta())) {
+			if (Integer.parseInt(this.getNumeroAgencia()) > Integer.parseInt(conta.getNumeroAgencia())) {
+				return 1;
+			}
+		}
+		if (Integer.parseInt(this.getNumeroConta()) > Integer.parseInt(conta.getNumeroConta())) {
+			if (Integer.parseInt(this.getNumeroAgencia()) < Integer.parseInt(conta.getNumeroAgencia())) {
+				return -1;
+			}
+		}
+
+		return 0;
+	}
 }

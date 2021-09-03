@@ -87,29 +87,29 @@ public class MainTerceiroExercicio {
 				6352.76, LocalDate.parse("2019-06-17"), LocalDate.parse("2018-02-11"), "Falência da Empresa", "Nextel");
 
 		// Adicionando os elementos de conta corrente no respectivo array
-		adicionarElementosNoArrayContaCorrente(contaCorrente1);
-		adicionarElementosNoArrayContaCorrente(contaCorrente2);
-		adicionarElementosNoArrayContaCorrente(contaCorrente3);
-		adicionarElementosNoArrayContaCorrente(contaCorrente4);
-		adicionarElementosNoArrayContaCorrente(contaCorrente5);
-		adicionarElementosNoArrayContaCorrente(contaCorrente6);
-		adicionarElementosNoArrayContaCorrente(contaCorrente7);
-
-		imprimirOPrimeiroElementoDoArrayContaCorrente();
-		imprimirOUltimoElementoDoArrayContaCorrente();
-		imprimirQuantidadeElementosDoArrayContaCorrente();
+//		adicionarElementosNoArrayContaCorrente(contaCorrente1);
+//		adicionarElementosNoArrayContaCorrente(contaCorrente2);
+//		adicionarElementosNoArrayContaCorrente(contaCorrente3);
+//		adicionarElementosNoArrayContaCorrente(contaCorrente4);
+//		adicionarElementosNoArrayContaCorrente(contaCorrente5);
+//		adicionarElementosNoArrayContaCorrente(contaCorrente6);
+//		adicionarElementosNoArrayContaCorrente(contaCorrente7);
+//
+//		imprimirOPrimeiroElementoDoArrayContaCorrente();
+//		imprimirOUltimoElementoDoArrayContaCorrente();
+//		imprimirQuantidadeElementosDoArrayContaCorrente();
 
 		// Adicionando os elementos de conta poupança no respectivo array
-		adicionarElementosNoArrayContaPoupanca(contaPoupanca1);
-		adicionarElementosNoArrayContaPoupanca(contaPoupanca2);
-		adicionarElementosNoArrayContaPoupanca(contaPoupanca3);
-		adicionarElementosNoArrayContaPoupanca(contaPoupanca4);
-		adicionarElementosNoArrayContaPoupanca(contaPoupanca5);
-		adicionarElementosNoArrayContaPoupanca(contaPoupanca6);
-
-		imprimirOPrimeiroElementoDoArrayContaPoupanca();
-		imprimirOUltimoElementoDoArrayContaPoupanca();
-		imprimirQuantidadeElementosDoArrayContaPoupanca();
+//		adicionarElementosNoArrayContaPoupanca(contaPoupanca1);
+//		adicionarElementosNoArrayContaPoupanca(contaPoupanca2);
+//		adicionarElementosNoArrayContaPoupanca(contaPoupanca3);
+//		adicionarElementosNoArrayContaPoupanca(contaPoupanca4);
+//		adicionarElementosNoArrayContaPoupanca(contaPoupanca5);
+//		adicionarElementosNoArrayContaPoupanca(contaPoupanca6);
+//
+//		imprimirOPrimeiroElementoDoArrayContaPoupanca();
+//		imprimirOUltimoElementoDoArrayContaPoupanca();
+//		imprimirQuantidadeElementosDoArrayContaPoupanca();
 
 		// Adicionando os elementos de conta poupança no respectivo array
 		adicionarElementosNoArrayContaEmpresarial(contaEmpresarial1);

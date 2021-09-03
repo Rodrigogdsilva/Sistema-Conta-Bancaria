@@ -34,9 +34,35 @@ public class ContaEmpresarial extends ContaBancaria {
 		sb.append("Código Identificador: " + getCodigoIdentificadorBanco() + "\n");
 		sb.append("Nome da Empresa: " + getNomeEmpresa() + "\n");
 		sb.append("Nome do cliente: " + getCliente().getNomeCliente() + "\n");
-		sb.append("Numero da Conta: " + getNumeroConta() + "\n");
 		sb.append("Numero da Agência: " + getNumeroAgencia() + "\n");
+		sb.append("Numero da Conta: " + getNumeroConta() + "\n");
 		sb.append("Saldo da Conta: " + String.format("%.2f", getSaldoConta()) + "\n");
 		return sb.toString();
+	}
+
+	@Override
+	public int compareTo(ContaBancaria conta) {
+		if (Integer.parseInt(this.getNumeroConta()) < Integer.parseInt(conta.getNumeroConta())) {
+			if (Integer.parseInt(this.getNumeroAgencia()) < Integer.parseInt(conta.getNumeroAgencia())) {
+				return -1;
+			}
+		}
+			if (Integer.parseInt(this.getNumeroConta()) < Integer.parseInt(conta.getNumeroConta())) {
+				if (Integer.parseInt(this.getNumeroAgencia()) > Integer.parseInt(conta.getNumeroAgencia())) {
+					return 1;
+				}
+			}
+		if (Integer.parseInt(this.getNumeroConta()) > Integer.parseInt(conta.getNumeroConta())) {
+			if (Integer.parseInt(this.getNumeroAgencia()) > Integer.parseInt(conta.getNumeroAgencia())) {
+				return 1;
+			}
+		}
+		if (Integer.parseInt(this.getNumeroConta()) > Integer.parseInt(conta.getNumeroConta())) {
+			if (Integer.parseInt(this.getNumeroAgencia()) < Integer.parseInt(conta.getNumeroAgencia())) {
+				return -1;
+			}
+		}
+
+		return 0;
 	}
 }
