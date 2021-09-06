@@ -145,27 +145,24 @@ public class MainQuintoExercício {
 
 		retiraDuplicados();
 
-		organizaPorNumeroDeContaEAgencia(listaContas);
+		organizaPorNumeroDeAgenciaEConta(listaContas);
 
 	}
 
 	public static void retiraDuplicados() {
 
-		List<ContaBancaria> listaContasAuxiliar = listaContas;
-
 		for (int i = 0; i < listaContas.size(); i++) {
 			for (int j = i + 1; j < listaContas.size(); j++) {
-				if (listaContas.get(i).equals(listaContasAuxiliar.get(j))) {
-					listaContasDuplicadas.add(listaContasAuxiliar.get(j));
+				if (listaContas.get(i).equals(listaContas.get(j))) {
+					listaContasDuplicadas.add(listaContas.get(j));
 					listaContas.remove(j);
 				}
 			}
 		}
 	}
 
-	public static void organizaPorNumeroDeContaEAgencia(List conta) {
+	public static void organizaPorNumeroDeAgenciaEConta(List<ContaBancaria> conta) {
 		Collections.sort(conta);
-		System.out.println("ORGANIZAÇÃO");
 		System.out.println(conta.toString());
 	}
 }
