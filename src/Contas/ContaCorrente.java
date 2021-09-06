@@ -180,30 +180,4 @@ public class ContaCorrente extends ContaBancaria {
 			System.out.println("Conta encerrada, não é possível fazer qualquer tipo de transação.");
 		}
 	}
-
-	@Override
-	public int compareTo(ContaBancaria conta) {
-		if (Integer.parseInt(this.getNumeroConta()) < Integer.parseInt(conta.getNumeroConta())) {
-			if (Integer.parseInt(this.getNumeroAgencia()) < Integer.parseInt(conta.getNumeroAgencia())) {
-				return -1;
-			}
-		}
-			if (Integer.parseInt(this.getNumeroConta()) < Integer.parseInt(conta.getNumeroConta())) {
-				if (Integer.parseInt(this.getNumeroAgencia()) > Integer.parseInt(conta.getNumeroAgencia())) {
-					return 1;
-				}
-			}
-		if (Integer.parseInt(this.getNumeroConta()) > Integer.parseInt(conta.getNumeroConta())) {
-			if (Integer.parseInt(this.getNumeroAgencia()) > Integer.parseInt(conta.getNumeroAgencia())) {
-				return 1;
-			}
-		}
-		if (Integer.parseInt(this.getNumeroConta()) > Integer.parseInt(conta.getNumeroConta())) {
-			if (Integer.parseInt(this.getNumeroAgencia()) < Integer.parseInt(conta.getNumeroAgencia())) {
-				return -1;
-			}
-		}
-
-		return 0;
-	}
 }

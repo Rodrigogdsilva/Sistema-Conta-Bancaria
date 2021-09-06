@@ -211,33 +211,20 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 				return false;
 			}
 		} else if (!numeroConta.equals(other.numeroConta)) {
-			System.out.println("Contas distintas, não possuem o mesmo número conta. \n");
+
 			return false;
 		}
 		return true;
 	}
 
 	public int compareTo(ContaBancaria conta) {
-		if (Integer.parseInt(this.numeroConta) < Integer.parseInt(conta.numeroConta)) {
-			if (Integer.parseInt(this.numeroAgencia) < Integer.parseInt(conta.numeroAgencia)) {
-				return -1;
-			}
+
+		if (this.numeroAgencia.compareTo(conta.numeroAgencia) == 0) {
+
+			return this.numeroConta.compareTo(conta.numeroConta);
+
+		} else {
+			return this.numeroAgencia.compareTo(conta.numeroAgencia);
 		}
-			if (Integer.parseInt(this.numeroConta) < Integer.parseInt(conta.numeroConta)) {
-				if (Integer.parseInt(this.numeroAgencia) > Integer.parseInt(conta.numeroAgencia)) {
-					return 1;
-				}
-			}
-		if (Integer.parseInt(this.numeroConta) > Integer.parseInt(conta.numeroConta)) {
-			if (Integer.parseInt(this.numeroAgencia) > Integer.parseInt(conta.numeroAgencia)) {
-				return 1;
-			}
-		}
-		if (Integer.parseInt(this.numeroConta) > Integer.parseInt(conta.numeroConta)) {
-			if (Integer.parseInt(this.numeroAgencia) < Integer.parseInt(conta.numeroAgencia)) {
-				return -1;
-			}
-		}
-		return 0;
 	}
 }

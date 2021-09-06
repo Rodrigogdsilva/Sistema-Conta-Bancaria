@@ -147,6 +147,10 @@ public class MainQuintoExercício {
 
 		organizaPorNumeroDeAgenciaEConta(listaContas);
 
+		System.out.println("");
+
+		organizaPorNumeroDeAgenciaEConta(listaContasDuplicadas);
+
 	}
 
 	public static void retiraDuplicados() {
@@ -162,7 +166,9 @@ public class MainQuintoExercício {
 	}
 
 	public static void organizaPorNumeroDeAgenciaEConta(List<ContaBancaria> conta) {
+
 		Collections.sort(conta);
-		System.out.println(conta.toString());
+		System.out.println(conta);
+
 	}
 }
