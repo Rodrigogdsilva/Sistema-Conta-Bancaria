@@ -82,4 +82,12 @@ public class Cliente {
 				"Os dois clientes inseridos tratam-se da mesma pessoa, pois possuem o mesmo número de documento. \n");
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Cliente [nomeCliente=" + nomeCliente + ", numeroDocCliente=" + numeroDocCliente + ", scoreCliente="
+				+ scoreCliente + ", tipoCliente=" + tipoCliente + "]";
+	}
+	
+	
 }
