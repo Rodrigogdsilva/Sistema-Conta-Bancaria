@@ -184,7 +184,7 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
-
+			
 			return true;
 		}
 		if (obj == null) {
@@ -195,19 +195,15 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 		}
 		ContaBancaria other = (ContaBancaria) obj;
 		if (numeroAgencia == null) {
-			System.out.println("Não há conta cadastrada para este cliente");
 			if (other.numeroAgencia != null)
-				System.out.println("Não há conta cadastrada para este cliente");
-			return false;
+				return false;
 
 		} else if (!numeroAgencia.equals(other.numeroAgencia)) {
 
 			return false;
 		}
 		if (numeroConta == null) {
-			System.out.println("Não há conta cadastrada para este cliente");
 			if (other.numeroConta != null) {
-				System.out.println("Não há conta cadastrada para este cliente");
 				return false;
 			}
 		} else if (!numeroConta.equals(other.numeroConta)) {
@@ -224,6 +220,7 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 			return this.numeroConta.compareTo(conta.numeroConta);
 
 		} else {
+			
 			return this.numeroAgencia.compareTo(conta.numeroAgencia);
 		}
 	}

@@ -1,8 +1,7 @@
 package application;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import org.joda.time.LocalDate;
 import clientes.Cliente;
 import clientes.TipoCliente;
@@ -11,11 +10,11 @@ import contas.ContaCorrente;
 import contas.ContaEmpresarial;
 import contas.ContaPoupanca;
 
-public class MainQuintoExercício {
+public class MainSextoExercicio {
 
-	static List<ContaBancaria> listaContas = new ArrayList<>();
-	static List<ContaBancaria> listaContasDuplicadas = new ArrayList<>();
-	static List<ContaBancaria> listaContasUnicas = new ArrayList<>();
+	static Set<ContaBancaria> setAccounts = new HashSet<>();
+
+	static int elements = 30;
 
 	public static void main(String[] args) {
 
@@ -111,67 +110,42 @@ public class MainQuintoExercício {
 				4922.01, LocalDate.parse("2007-08-17"), null, null, "TAM");
 
 		// Inserindo contas na lista
-		listaContas.add(contaCorrente1);
-		listaContas.add(contaCorrente2);
-		listaContas.add(contaCorrente3);
-		listaContas.add(contaCorrente4);
-		listaContas.add(contaCorrente5);
-		listaContas.add(contaCorrente6);
-		listaContas.add(contaCorrente7);
-		listaContas.add(contaPoupanca1);
-		listaContas.add(contaPoupanca2);
-		listaContas.add(contaPoupanca3);
-		listaContas.add(contaPoupanca4);
-		listaContas.add(contaPoupanca5);
-		listaContas.add(contaPoupanca6);
-		listaContas.add(contaEmpresarial1);
-		listaContas.add(contaEmpresarial2);
-		listaContas.add(contaEmpresarial3);
-		listaContas.add(contaEmpresarial4);
-		listaContas.add(contaEmpresarial5);
-		listaContas.add(contaEmpresarial6);
-		listaContas.add(contaEmpresarial7);
+		setAccounts.add(contaCorrente1);
+		setAccounts.add(contaCorrente2);
+		setAccounts.add(contaCorrente3);
+		setAccounts.add(contaCorrente4);
+		setAccounts.add(contaCorrente5);
+		setAccounts.add(contaCorrente6);
+		setAccounts.add(contaCorrente7);
+		setAccounts.add(contaPoupanca1);
+		setAccounts.add(contaPoupanca2);
+		setAccounts.add(contaPoupanca3);
+		setAccounts.add(contaPoupanca4);
+		setAccounts.add(contaPoupanca5);
+		setAccounts.add(contaPoupanca6);
+		setAccounts.add(contaEmpresarial1);
+		setAccounts.add(contaEmpresarial2);
+		setAccounts.add(contaEmpresarial3);
+		setAccounts.add(contaEmpresarial4);
+		setAccounts.add(contaEmpresarial5);
+		setAccounts.add(contaEmpresarial6);
+		setAccounts.add(contaEmpresarial7);
 
 		// inserção dos objetos duplicados
-		listaContas.add(contaCorrente8);
-		listaContas.add(contaCorrente9);
-		listaContas.add(contaCorrente10);
-		listaContas.add(contaPoupanca7);
-		listaContas.add(contaPoupanca8);
-		listaContas.add(contaPoupanca9);
-		listaContas.add(contaPoupanca10);
-		listaContas.add(contaEmpresarial8);
-		listaContas.add(contaEmpresarial9);
-		listaContas.add(contaEmpresarial10);
+		setAccounts.add(contaCorrente8);
+		setAccounts.add(contaCorrente9);
+		setAccounts.add(contaCorrente10);
+		setAccounts.add(contaPoupanca7);
+		setAccounts.add(contaPoupanca8);
+		setAccounts.add(contaPoupanca9);
+		setAccounts.add(contaPoupanca10);
+		setAccounts.add(contaEmpresarial8);
+		setAccounts.add(contaEmpresarial9);
+		setAccounts.add(contaEmpresarial10);
 
-		retiraDuplicados();
-
-		organizaPorNumeroDeAgenciaEConta(listaContasUnicas);
-
-		System.out.println("");
-
-		//organizaPorNumeroDeAgenciaEConta(listaContasDuplicadas);
-		
-		System.out.println(listaContasUnicas.size());
-		System.out.println(listaContasDuplicadas.size());
+		System.out.println("Total de elementos inseridos no set: " + setAccounts.size());
+		System.out.println("Total de tentativas de inserção: " + elements);
 
 	}
 
-	public static void retiraDuplicados() {
-		
-		for (ContaBancaria contaBancaria : listaContas) {
-			if(listaContasUnicas.contains(contaBancaria)){
-				listaContasDuplicadas.add(contaBancaria);
-			} else {
-				listaContasUnicas.add(contaBancaria);
-			}
-		}
-	}
-
-	public static void organizaPorNumeroDeAgenciaEConta(List<ContaBancaria> conta) {
-
-		Collections.sort(conta);
-		System.out.println(conta);
-
-	}
 }
