@@ -1,6 +1,8 @@
 package contas;
 
-import org.joda.time.LocalDate;
+
+import java.time.LocalDate;
+
 import clientes.Cliente;
 
 public abstract class ContaBancaria implements Comparable<ContaBancaria> {
@@ -160,6 +162,7 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 		}
 	}
 
+	//Implementação do toString sobrescrevendo 
 	public String toString() {
 
 		StringBuilder sb = new StringBuilder();

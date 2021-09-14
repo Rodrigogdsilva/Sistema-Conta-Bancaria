@@ -1,9 +1,8 @@
 package application;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
-
-import org.joda.time.LocalDate;
 
 import clientes.Cliente;
 import clientes.TipoCliente;
@@ -27,7 +26,6 @@ public class MainSetimoExercicio {
 		Cliente cliente7 = new Cliente("Florisvaldo", "777.777.777-77", "495", TipoCliente.PESSOA_JURIDICA);
 		Cliente cliente8 = new Cliente("Augusto", "888.888.888-88", "237", TipoCliente.PESSOA_JURIDICA);
 		Cliente cliente9 = new Cliente("Vanessa", "999.999.999-99", "623", TipoCliente.PESSOA_JURIDICA);
-		Cliente cliente10 = new Cliente("Gerson", "111.111.111-22", "500", TipoCliente.SERVIDOR_PUBLICO);
 
 		// Instanciando objetos do tipo Conta Corrente
 		ContaCorrente contaCorrente1 = new ContaCorrente(cliente1, "Itaú", "341", "11111", "1111", 1000.00,
@@ -36,7 +34,7 @@ public class MainSetimoExercicio {
 				LocalDate.parse("2015-04-08"), null, null, 10, 8);
 		ContaCorrente contaCorrente3 = new ContaCorrente(cliente3, "Original", "212", "33333", "3333", 1700.00,
 				LocalDate.parse("2013-02-09"), null, null, 4, 3);
-		ContaCorrente contaCorrente4 = new ContaCorrente(cliente10, "Cooperativo Sicredi S.A.", "748", "43214", "8852",
+		ContaCorrente contaCorrente4 = new ContaCorrente(cliente2, "Cooperativo Sicredi S.A.", "748", "43214", "8852",
 				74.00, LocalDate.parse("2012-09-20"), null, null, 6, 2);
 
 		// Instanciando objetos do tipo Conta Corrente
@@ -68,8 +66,6 @@ public class MainSetimoExercicio {
 		mapAccountsAndClients.put(cliente9, contaEmpresarial3);
 		
 		System.out.println(mapAccountsAndClients);
-		
-		
 		
 	}
 }

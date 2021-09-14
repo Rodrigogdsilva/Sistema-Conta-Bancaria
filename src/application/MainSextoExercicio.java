@@ -1,8 +1,9 @@
 package application;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
-import org.joda.time.LocalDate;
+
 import clientes.Cliente;
 import clientes.TipoCliente;
 import contas.ContaBancaria;

@@ -1,7 +1,7 @@
 package contas;
 
 import java.util.Scanner;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import clientes.Cliente;
 
 public class ContaCorrente extends ContaBancaria {

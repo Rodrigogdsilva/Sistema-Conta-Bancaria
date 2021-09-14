@@ -1,5 +1,8 @@
 package application;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import java.time.LocalDate;
 
 import clientes.Cliente;
@@ -9,11 +12,11 @@ import contas.ContaCorrente;
 import contas.ContaEmpresarial;
 import contas.ContaPoupanca;
 
-public class MainQuartoExercicio {
+public class ClasseTeste {
 
-	static int contadorArray;
-
-	static ContaBancaria[] bancarias = new ContaBancaria[20];
+	static Set<ContaBancaria> setAccounts = new HashSet<>();
+	static Set<ContaBancaria> setDuplicatedAccounts = new HashSet<>();
+	static int elements = 0;
 
 	public static void main(String[] args) {
 
@@ -26,7 +29,7 @@ public class MainQuartoExercicio {
 		Cliente cliente7 = new Cliente("Florisvaldo", "777.777.777-77", "495", TipoCliente.PESSOA_JURIDICA);
 		Cliente cliente8 = new Cliente("Augusto", "888.888.888-88", "237", TipoCliente.PESSOA_JURIDICA);
 		Cliente cliente9 = new Cliente("Vanessa", "999.999.999-99", "623", TipoCliente.PESSOA_JURIDICA);
-		Cliente cliente10 = new Cliente("Rodrigo", "111.111.111-11", "500", TipoCliente.SERVIDOR_PUBLICO);
+		Cliente cliente10 = new Cliente("Gerson", "111.111.111-22", "500", TipoCliente.SERVIDOR_PUBLICO);
 		Cliente cliente11 = new Cliente("Francisco", "111.111.111-12", "685", TipoCliente.FUNCIONARIO_BANCO);
 		Cliente cliente12 = new Cliente("Paulo", "111.111.111-13", "323", TipoCliente.PESSOA_FISICA);
 		Cliente cliente13 = new Cliente("Raimundo", "111.111.111-14", "143", TipoCliente.SERVIDOR_PUBLICO);
@@ -45,11 +48,11 @@ public class MainQuartoExercicio {
 				LocalDate.parse("2015-04-08"), null, null, 10, 8);
 		ContaCorrente contaCorrente3 = new ContaCorrente(cliente3, "Original", "212", "33333", "3333", 1700.00,
 				LocalDate.parse("2013-02-09"), null, null, 4, 3);
-		ContaCorrente contaCorrente4 = new ContaCorrente(cliente10, "Cooperativo Sicredi S.A.", "748", "11111", "1111",
+		ContaCorrente contaCorrente4 = new ContaCorrente(cliente10, "Cooperativo Sicredi S.A.", "748", "43214", "8852",
 				74.00, LocalDate.parse("2012-09-20"), null, null, 6, 2);
 		ContaCorrente contaCorrente5 = new ContaCorrente(cliente11, "Agibank S.A.", "121", "12347", "5206", 864.00,
 				LocalDate.parse("2006-01-30"), null, null, 3, 3);
-		ContaCorrente contaCorrente6 = new ContaCorrente(cliente12, "BMG S.A.", "318", "11111", "1111", 5327.65,
+		ContaCorrente contaCorrente6 = new ContaCorrente(cliente12, "BMG S.A.", "318", "22256", "9587", 5327.65,
 				LocalDate.parse("2001-12-24"), LocalDate.parse("2010-05-22"), "Mudança de Instituição Bancária", 10, 7);
 		ContaCorrente contaCorrente7 = new ContaCorrente(cliente13, "Cargill S.A", "040", "32687", "3685", 3561.96,
 				LocalDate.parse("2012-01-02"), null, null, 6, 4);
@@ -61,7 +64,7 @@ public class MainQuartoExercicio {
 				LocalDate.parse("2017-09-12"), null, null, 300, 200, 2);
 		ContaPoupanca contaPoupanca3 = new ContaPoupanca(cliente6, "Bradesco S.A", "237", "66666", "6666", 357.79,
 				LocalDate.parse("2016-12-01"), null, null, 127, 50, 3);
-		ContaPoupanca contaPoupanca4 = new ContaPoupanca(cliente14, "Itaú", "341", "11111", "1111", 1000.00,
+		ContaPoupanca contaPoupanca4 = new ContaPoupanca(cliente14, "Itaú", "341", "11125", "1125", 1000.00,
 				LocalDate.parse("2015-05-02"), LocalDate.parse("2018-02-11"), "Falecimento", 300, 75, 4);
 		ContaPoupanca contaPoupanca5 = new ContaPoupanca(cliente15, "Citibank S.A.", "745", "83647", "2196", 7462.99,
 				LocalDate.parse("2012-11-12"), null, null, 247, 400, 2);
@@ -84,65 +87,75 @@ public class MainQuartoExercicio {
 		ContaEmpresarial contaEmpresarial7 = new ContaEmpresarial(cliente20, "Magliano S.A", "113", "23856", "7562",
 				6352.76, LocalDate.parse("2019-06-17"), LocalDate.parse("2018-02-11"), "Falência da Empresa", "Nextel");
 
-		adicionarElementosNoArrayConta(contaCorrente1);
-		adicionarElementosNoArrayConta(contaCorrente2);
-		adicionarElementosNoArrayConta(contaCorrente3);
-		adicionarElementosNoArrayConta(contaCorrente4);
-		adicionarElementosNoArrayConta(contaCorrente5);
-		adicionarElementosNoArrayConta(contaCorrente6);
-		adicionarElementosNoArrayConta(contaCorrente7);
-		adicionarElementosNoArrayConta(contaPoupanca1);
-		adicionarElementosNoArrayConta(contaPoupanca2);
-		adicionarElementosNoArrayConta(contaPoupanca3);
-		adicionarElementosNoArrayConta(contaPoupanca4);
-		adicionarElementosNoArrayConta(contaPoupanca5);
-		adicionarElementosNoArrayConta(contaPoupanca6);
-		adicionarElementosNoArrayConta(contaEmpresarial1);
-		adicionarElementosNoArrayConta(contaEmpresarial2);
-		adicionarElementosNoArrayConta(contaEmpresarial3);
-		adicionarElementosNoArrayConta(contaEmpresarial4);
-		adicionarElementosNoArrayConta(contaEmpresarial5);
-		adicionarElementosNoArrayConta(contaEmpresarial6);
-		adicionarElementosNoArrayConta(contaEmpresarial7);
+		// Instanciando objetos duplicados
+		ContaCorrente contaCorrente8 = new ContaCorrente(cliente2, "Santander", "033", "22222", "2222", 500.00,
+				LocalDate.parse("2015-04-08"), null, null, 10, 8);
+		ContaCorrente contaCorrente9 = new ContaCorrente(cliente3, "Original", "212", "33333", "3333", 1700.00,
+				LocalDate.parse("2013-02-09"), null, null, 4, 3);
+		ContaCorrente contaCorrente10 = new ContaCorrente(cliente10, "Cooperativo Sicredi S.A.", "748", "11111", "1111",
+				74.00, LocalDate.parse("2012-09-20"), null, null, 6, 2);
 
-		imprimirOPrimeiroElementoDoArrayConta();
-		imprimirOUltimoElementoDoArrayConta();
-		imprimirQuantidadeElementosDoArrayConta();
+		ContaPoupanca contaPoupanca7 = new ContaPoupanca(cliente4, "Banco do Brasil", "756", "44444", "4444", 3400.00,
+				LocalDate.parse("2002-09-30"), null, null, 150, 135, 1);
+		ContaPoupanca contaPoupanca8 = new ContaPoupanca(cliente5, "Votorantim", "655", "55555", "5555", 1238.75,
+				LocalDate.parse("2017-09-12"), null, null, 300, 200, 2);
+		ContaPoupanca contaPoupanca9 = new ContaPoupanca(cliente6, "Bradesco S.A", "237", "66666", "6666", 357.79,
+				LocalDate.parse("2016-12-01"), null, null, 127, 50, 3);
+		ContaPoupanca contaPoupanca10 = new ContaPoupanca(cliente14, "Itaú", "341", "11125", "1125", 1000.00,
+				LocalDate.parse("2015-05-02"), LocalDate.parse("2018-02-11"), "Falecimento", 300, 75, 4);
+
+		ContaEmpresarial contaEmpresarial8 = new ContaEmpresarial(cliente7, "Inter S.A", "077", "77777", "7777",
+				1103.03, LocalDate.parse("2010-11-28"), null, null, "Ambev");
+		ContaEmpresarial contaEmpresarial9 = new ContaEmpresarial(cliente8, "Caixa Econômica Federal", "104", "88888",
+				"8888", 135.01, LocalDate.parse("2013-05-22"), null, null, "JBS");
+		ContaEmpresarial contaEmpresarial10 = new ContaEmpresarial(cliente9, "Banco Safra S.A", "422", "99999", "9999",
+				4922.01, LocalDate.parse("2007-08-17"), null, null, "TAM");
+
+		// Inserindo contas na lista
+		adicionaElementosNoSet(contaCorrente1);
+		adicionaElementosNoSet(contaCorrente2);
+		adicionaElementosNoSet(contaCorrente3);
+		adicionaElementosNoSet(contaCorrente4);
+		adicionaElementosNoSet(contaCorrente5);
+		adicionaElementosNoSet(contaCorrente6);
+		adicionaElementosNoSet(contaCorrente7);
+		adicionaElementosNoSet(contaPoupanca1);
+		adicionaElementosNoSet(contaPoupanca2);
+		adicionaElementosNoSet(contaPoupanca3);
+		adicionaElementosNoSet(contaPoupanca4);
+		adicionaElementosNoSet(contaPoupanca5);
+		adicionaElementosNoSet(contaPoupanca6);
+		adicionaElementosNoSet(contaEmpresarial1);
+		adicionaElementosNoSet(contaEmpresarial2);
+		adicionaElementosNoSet(contaEmpresarial3);
+		adicionaElementosNoSet(contaEmpresarial4);
+		adicionaElementosNoSet(contaEmpresarial5);
+		adicionaElementosNoSet(contaEmpresarial6);
+		adicionaElementosNoSet(contaEmpresarial7);
+
+		// inserção dos objetos duplicados
+		adicionaElementosNoSet(contaCorrente8);
+		adicionaElementosNoSet(contaCorrente9);
+		adicionaElementosNoSet(contaCorrente10);
+		adicionaElementosNoSet(contaPoupanca7);
+		adicionaElementosNoSet(contaPoupanca8);
+		adicionaElementosNoSet(contaPoupanca9);
+		adicionaElementosNoSet(contaPoupanca10);
+		adicionaElementosNoSet(contaEmpresarial8);
+		adicionaElementosNoSet(contaEmpresarial9);
+		adicionaElementosNoSet(contaEmpresarial10);
+
+		System.out.println("Total de elementos inseridos no set: " + setAccounts.size());
+		System.out.println("Total de tentativas de inserção: " + elements);
+
 	}
 
-	// Métodos de manipulação de array da Conta
-	public static void adicionarElementosNoArrayConta(ContaBancaria conta) {
-		if (contadorArray < bancarias.length) {
-			bancarias[contadorArray] = conta;
-			contadorArray++;
-		} else {
-			System.out.println("Capacidade máxima de armazenamento atingida, não é possível adicionar mais contas.");
-		}
+	public static int adicionaElementosNoSet(ContaBancaria conta) {
+
+		setAccounts.add(conta);
+
+		elements++;
+
+		return elements;
 	}
-
-	public static void imprimirQuantidadeElementosDoArrayConta() {
-
-		System.out.println("\nExistem " + contadorArray + " elementos cadastradas no nosso sistema.");
-
-	}
-
-	public static void imprimirOPrimeiroElementoDoArrayConta() {
-
-		if (bancarias[0] != null) {
-			System.out.println("\n------------------------ ");
-			System.out.println(bancarias[0]);
-			System.out.println("------------------------");
-		} else {
-			System.out.println("Não foi possível exibir. \nNão há contas cadastradas.");
-		}
-	}
-
-	public static void imprimirOUltimoElementoDoArrayConta() {
-
-		System.out.println("\n------------------------ ");
-		System.out.println(bancarias[contadorArray - 1]);
-		System.out.println("------------------------");
-
-	}
-
 }

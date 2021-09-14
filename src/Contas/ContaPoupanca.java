@@ -1,7 +1,7 @@
 package contas;
 
 import java.util.Scanner;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import clientes.Cliente;
 
 public class ContaPoupanca extends ContaBancaria {
@@ -54,7 +54,7 @@ public class ContaPoupanca extends ContaBancaria {
 
 		if (getMotivoFechamento() == null) {
 
-			if (LocalDate.now().dayOfMonth().equals(1)) {
+			if (LocalDate.now().getDayOfMonth()==1) {
 				setSaldoConta(getSaldoConta() + rendimentoMensal);
 			} else {
 				System.out.println("Hoje não é o dia de rendimento! \nO seu dia de rendimento é: "
@@ -70,7 +70,7 @@ public class ContaPoupanca extends ContaBancaria {
 	@Override
 	public void sacar(double valor) {
 
-		int diferencaMeses = (LocalDate.now().getMonthOfYear() - super.getDataAberturaConta().getMonthOfYear());
+		int diferencaMeses = (LocalDate.now().getMonthValue() - super.getDataAberturaConta().getMonthValue());
 		int diferencaMesesPositivos = Math.abs(diferencaMeses);
 
 		if (getMotivoFechamento() == null) {
