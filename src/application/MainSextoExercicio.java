@@ -4,12 +4,12 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-import clientes.Cliente;
-import clientes.TipoCliente;
-import contas.ContaBancaria;
-import contas.ContaCorrente;
-import contas.ContaEmpresarial;
-import contas.ContaPoupanca;
+import cliente.Cliente;
+import cliente.TipoCliente;
+import conta.ContaBancaria;
+import conta.ContaCorrente;
+import conta.ContaEmpresarial;
+import conta.ContaPoupanca;
 
 public class MainSextoExercicio {
 

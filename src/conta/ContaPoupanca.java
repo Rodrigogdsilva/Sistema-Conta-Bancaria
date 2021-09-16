@@ -1,8 +1,10 @@
-package contas;
+package conta;
 
 import java.util.Scanner;
+
+import cliente.Cliente;
+
 import java.time.LocalDate;
-import clientes.Cliente;
 
 public class ContaPoupanca extends ContaBancaria {
 

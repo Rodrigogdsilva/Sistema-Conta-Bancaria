@@ -3,13 +3,15 @@ package application;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import cliente.Cliente;
+import cliente.TipoCliente;
+import conta.ContaBancaria;
+import conta.ContaCorrente;
+import conta.ContaEmpresarial;
+import conta.ContaPoupanca;
+
 import java.time.LocalDate;
-import clientes.Cliente;
-import clientes.TipoCliente;
-import contas.ContaBancaria;
-import contas.ContaCorrente;
-import contas.ContaEmpresarial;
-import contas.ContaPoupanca;
 
 public class MainQuintoExercício {
 

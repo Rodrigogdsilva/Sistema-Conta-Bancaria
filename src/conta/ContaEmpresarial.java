@@ -1,7 +1,8 @@
-package contas;
+package conta;
 
 import java.time.LocalDate;
-import clientes.Cliente;
+
+import cliente.Cliente;
 
 public class ContaEmpresarial extends ContaBancaria {
 

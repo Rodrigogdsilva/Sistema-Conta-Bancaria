@@ -1,9 +1,9 @@
-package contas;
+package conta;
 
 
 import java.time.LocalDate;
 
-import clientes.Cliente;
+import cliente.Cliente;
 
 public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 

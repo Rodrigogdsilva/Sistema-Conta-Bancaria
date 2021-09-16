@@ -3,10 +3,10 @@ package application;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import clientes.Cliente;
-import clientes.TipoCliente;
-import contas.ContaBancaria;
-import contas.ContaCorrente;
+import cliente.Cliente;
+import cliente.TipoCliente;
+import conta.ContaBancaria;
+import conta.ContaCorrente;
 
 public class MainOitavoExercício {
 	public static void main(String[] args) {
@@ -33,16 +33,16 @@ public class MainOitavoExercício {
 		phraseStringBuilder.append(", possuidor do documento " + conta.getCliente().getNumeroDocCliente());
 		phraseStringBuilder.append(", possui uma " + conta.getClass().getSimpleName());
 		phraseStringBuilder.append(
-				" nesta instituição financeira, reconhecida pelo código " + conta.getCodigoIdentificadorBanco());
+				" nesta instituição financeira, \nreconhecida pelo código " + conta.getCodigoIdentificadorBanco());
 		phraseStringBuilder.append(", com o valor de R$ " + String.format("%.2f", conta.getSaldoConta()));
-		phraseStringBuilder.append(" em conta em " + dtf.format(LocalDate.now()) + "\n");
-		phraseStringBuilder.append("A " + conta.getClass().getSimpleName());
+		phraseStringBuilder.append(" em conta em " + dtf.format(LocalDate.now()) + ".\n");
+		phraseStringBuilder.append("\nA " + conta.getClass().getSimpleName());
 		phraseStringBuilder.append(", da agência " + conta.getNumeroAgencia());
 		phraseStringBuilder.append(", e da conta " + conta.getNumeroConta());
 		phraseStringBuilder.append(", foi aberta pelo " + conta.getCliente().getNomeCliente());
 		phraseStringBuilder.append(" na data de " + dtf.format(conta.getDataAberturaConta()));
-		phraseStringBuilder
-				.append(", em uma unidade presencial ou por meio de algum meio de acesso digital dessa instituição.\n");
+		phraseStringBuilder.append(
+				", \nem uma unidade presencial ou por meio de algum meio de acesso digital dessa instituição.\n");
 
 		if (conta.getDataFechamentoConta() != null) {
 			phraseStringBuilder.append("O cliente " + conta.getCliente().getTipoCliente());
@@ -60,13 +60,14 @@ public class MainOitavoExercício {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d 'de' MMMM 'de' YYYY");
 
 		phraseString = ("A/O " + conta.getCliente().getTipoCliente() + " de nome " + conta.getCliente().getNomeCliente()
-				+ ", possui uma " + conta.getClass().getSimpleName()
-				+ " nesta instituição financeira, reconhecida pelo código " + conta.getCodigoIdentificadorBanco()
-				+ ", com o valor de R$ " + String.format("%.2f", conta.getSaldoConta()) + " em conta em "
-				+ dtf.format(LocalDate.now()) + "\n" + "A " + conta.getClass().getSimpleName() + ", da agência "
-				+ conta.getNumeroAgencia() + ", e da conta " + conta.getNumeroConta() + ", foi aberta pelo "
-				+ conta.getCliente().getNomeCliente() + " na data de " + dtf.format(conta.getDataAberturaConta())
-				+ ", em uma unidade presencial ou por meio de algum meio de acesso digital dessa instituição.\n");
+				+ ", possuidor do documento " + conta.getCliente().getNumeroDocCliente() + ", possui uma "
+				+ conta.getClass().getSimpleName() + " nesta instituição financeira, \nreconhecida pelo código "
+				+ conta.getCodigoIdentificadorBanco() + ", com o valor de R$ "
+				+ String.format("%.2f", conta.getSaldoConta()) + " em conta em " + dtf.format(LocalDate.now())
+				+ ".\n\nA " + conta.getClass().getSimpleName() + ", da agência " + conta.getNumeroAgencia()
+				+ ", e da conta " + conta.getNumeroConta() + ", foi aberta pelo " + conta.getCliente().getNomeCliente()
+				+ " na data de " + dtf.format(conta.getDataAberturaConta())
+				+ ", \nem uma unidade presencial ou por meio de algum meio de acesso digital dessa instituição.\n");
 
 		if (conta.getDataFechamentoConta() != null) {
 			phraseString += ("O cliente " + conta.getCliente().getTipoCliente() + " encerrou sua "

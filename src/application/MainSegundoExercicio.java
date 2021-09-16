@@ -3,12 +3,12 @@ package application;
 
 import java.time.LocalDate;
 
-import clientes.Cliente;
-import clientes.TipoCliente;
+import cliente.Cliente;
+import cliente.TipoCliente;
 import comparadores.Comparador;
-import contas.ContaCorrente;
-import contas.ContaEmpresarial;
-import contas.ContaPoupanca;
+import conta.ContaCorrente;
+import conta.ContaEmpresarial;
+import conta.ContaPoupanca;
 
 public class MainSegundoExercicio {
 

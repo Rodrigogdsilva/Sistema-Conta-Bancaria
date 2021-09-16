@@ -4,17 +4,17 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-import clientes.Cliente;
-import clientes.TipoCliente;
-import contas.ContaBancaria;
-import contas.ContaCorrente;
-import contas.ContaEmpresarial;
-import contas.ContaPoupanca;
+import cliente.Cliente;
+import cliente.TipoCliente;
+import conta.ContaBancaria;
+import conta.ContaCorrente;
+import conta.ContaEmpresarial;
+import conta.ContaPoupanca;
 
 public class MainSetimoExercicio {
-	
+
 	public static void main(String[] args) {
-		
+
 		Map<Cliente, ContaBancaria> mapAccountsAndClients = new HashMap<>();
 
 		Cliente cliente1 = new Cliente("Rodrigo", "111.111.111-11", "500", TipoCliente.SERVIDOR_PUBLICO);
@@ -53,19 +53,18 @@ public class MainSetimoExercicio {
 		ContaEmpresarial contaEmpresarial3 = new ContaEmpresarial(cliente9, "Banco Safra S.A", "422", "99999", "9999",
 				4922.01, LocalDate.parse("2007-08-17"), null, null, "TAM");
 
-		
-		mapAccountsAndClients.put(cliente1, contaCorrente1);
-		mapAccountsAndClients.put(cliente1,contaCorrente2);
-		mapAccountsAndClients.put(cliente2, contaCorrente3);
-		mapAccountsAndClients.put(cliente3, contaCorrente4);
-		mapAccountsAndClients.put(cliente4, contaPoupanca1);
-		mapAccountsAndClients.put(cliente5, contaPoupanca2);
-		mapAccountsAndClients.put(cliente6, contaPoupanca3);
-		mapAccountsAndClients.put(cliente7, contaEmpresarial1);
-		mapAccountsAndClients.put(cliente8, contaEmpresarial2);
-		mapAccountsAndClients.put(cliente9, contaEmpresarial3);
-		
+		mapAccountsAndClients.put(contaCorrente1.getCliente(), contaCorrente1);
+		mapAccountsAndClients.put(contaCorrente2.getCliente(), contaCorrente2);
+		mapAccountsAndClients.put(contaCorrente3.getCliente(), contaCorrente3);
+		mapAccountsAndClients.put(contaCorrente4.getCliente(), contaCorrente4);
+		mapAccountsAndClients.put(contaPoupanca1.getCliente(), contaPoupanca1);
+		mapAccountsAndClients.put(contaPoupanca2.getCliente(), contaPoupanca2);
+		mapAccountsAndClients.put(contaPoupanca3.getCliente(), contaPoupanca3);
+		mapAccountsAndClients.put(contaEmpresarial1.getCliente(), contaEmpresarial1);
+		mapAccountsAndClients.put(contaEmpresarial2.getCliente(), contaEmpresarial2);
+		mapAccountsAndClients.put(contaEmpresarial3.getCliente(), contaEmpresarial3);
+
 		System.out.println(mapAccountsAndClients);
-		
+
 	}
 }
