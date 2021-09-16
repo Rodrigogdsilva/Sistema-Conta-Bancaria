@@ -18,8 +18,10 @@ public class MainOitavoExercício {
 		ContaCorrente contaCorrente1 = new ContaCorrente(cliente1, "Itaú", "341", "11111", "1111", 1000.00,
 				LocalDate.parse("2008-02-07"), LocalDate.parse("2017-03-08"), "Mudança de Instituição Bancária", 5, 4);
 
-		System.out.println(buildingASentenceWithString(contaCorrente2));
+		System.out.println(buildingASentenceWithString(contaCorrente1));
+		System.out.println(buildingASentenceWithStringBuilder(contaCorrente1));
 
+		System.out.println(buildingASentenceWithString(contaCorrente2));
 		System.out.println(buildingASentenceWithStringBuilder(contaCorrente2));
 	}
 
