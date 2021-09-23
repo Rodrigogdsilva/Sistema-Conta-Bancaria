@@ -1,6 +1,5 @@
 package conta;
 
-
 import java.time.LocalDate;
 
 import cliente.Cliente;
@@ -162,7 +161,7 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 		}
 	}
 
-	//Implementação do toString sobrescrevendo 
+	// Implementação do toString sobrescrevendo
 	public String toString() {
 
 		StringBuilder sb = new StringBuilder();
@@ -187,7 +186,6 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
-			
 			return true;
 		}
 		if (obj == null) {
@@ -200,9 +198,7 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 		if (numeroAgencia == null) {
 			if (other.numeroAgencia != null)
 				return false;
-
 		} else if (!numeroAgencia.equals(other.numeroAgencia)) {
-
 			return false;
 		}
 		if (numeroConta == null) {
@@ -210,7 +206,6 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 				return false;
 			}
 		} else if (!numeroConta.equals(other.numeroConta)) {
-
 			return false;
 		}
 		return true;
@@ -223,7 +218,7 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 			return this.numeroConta.compareTo(conta.numeroConta);
 
 		} else {
-			
+
 			return this.numeroAgencia.compareTo(conta.numeroAgencia);
 		}
 	}

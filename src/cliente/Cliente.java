@@ -61,25 +61,18 @@ public class Cliente {
 			return true;
 		}
 		if (obj == null) {
-			System.out.println("Cliente não cadastrado");
 			return false;
 		}
 		if (getClass() != obj.getClass()) {
-			System.out.println("Objetos de classes diferentes, não é possível efetuar a verificação");
 			return false;
 		}
 		Cliente other = (Cliente) obj;
 		if (numeroDocCliente == null) {
-			System.out.println("Não existe número de documento informado para este cliente");
 			if (other.numeroDocCliente != null)
-				System.out.println("Não existe número de documento informado para este cliente");
-			return false;
+				return false;
 		} else if (!numeroDocCliente.equals(other.numeroDocCliente)) {
-			System.out.println("Clientes distintos, números de documentos divergentes. \n");
 			return false;
 		}
-		System.out.println(
-				"Os dois clientes inseridos tratam-se da mesma pessoa, pois possuem o mesmo número de documento. \n");
 		return true;
 	}
 
@@ -88,6 +81,5 @@ public class Cliente {
 		return "Cliente [nomeCliente=" + nomeCliente + ", numeroDocCliente=" + numeroDocCliente + ", scoreCliente="
 				+ scoreCliente + ", tipoCliente=" + tipoCliente + "]";
 	}
-	
-	
+
 }
