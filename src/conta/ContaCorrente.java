@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class ContaCorrente extends ContaBancaria {
 
 	// Atributos
-	final private double desconto = 13.9;
+	private final double desconto = 13.9;
 	private int quantidadeSaques;
 	private int quantidadeTransferencias;
 	private int quantidadeMaximaSaques;
