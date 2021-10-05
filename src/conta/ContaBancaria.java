@@ -3,6 +3,7 @@ package conta;
 import java.time.LocalDate;
 
 import cliente.Cliente;
+import servicos.Investimento;
 
 public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 
@@ -16,6 +17,7 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 	private LocalDate dataAberturaConta;
 	private LocalDate dataFechamentoConta;
 	private String motivoFechamento;
+	private Investimento investimento;
 
 	// Construtores
 	public ContaBancaria(Cliente cliente, String nomeBanco, String codigoIdentificadorBanco, String numeroConta,
@@ -103,6 +105,14 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public Investimento getInvestimento() {
+		return investimento;
+	}
+
+	public void setInvestimento(Investimento investimento) {
+		this.investimento = investimento;
 	}
 
 	// Método para sacar valores

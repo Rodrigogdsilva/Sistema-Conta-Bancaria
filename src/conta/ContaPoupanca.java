@@ -3,10 +3,11 @@ package conta;
 import java.util.Scanner;
 
 import cliente.Cliente;
+import servicos.InterfaceTaxa;
 
 import java.time.LocalDate;
 
-public class ContaPoupanca extends ContaBancaria {
+public class ContaPoupanca extends ContaBancaria implements InterfaceTaxa {
 
 	// Atributos
 	private int rendimentoMensal;
@@ -56,7 +57,7 @@ public class ContaPoupanca extends ContaBancaria {
 
 		if (getMotivoFechamento() == null) {
 
-			if (LocalDate.now().getDayOfMonth()==1) {
+			if (LocalDate.now().getDayOfMonth() == 1) {
 				setSaldoConta(getSaldoConta() + rendimentoMensal);
 			} else {
 				System.out.println("Hoje não é o dia de rendimento! \nO seu dia de rendimento é: "
@@ -112,6 +113,8 @@ public class ContaPoupanca extends ContaBancaria {
 
 						break;
 					}
+
+					scan.close();
 				}
 
 			} else {
@@ -122,5 +125,34 @@ public class ContaPoupanca extends ContaBancaria {
 		} else {
 			System.out.println("Conta encerrada, não é possível fazer qualquer tipo de transação.");
 		}
+	}
+
+	public double tributacao() {
+
+		LocalDate inicialDate = LocalDate.parse("2021-11-01");
+
+		if (inicialDate.isBefore(LocalDate.now()) || inicialDate.equals(LocalDate.now())) {
+
+			System.out.println("CONTA POUPANCA");
+			
+			double taxa = getSaldoConta() * 0.03;
+
+			System.out.println("Saldo anterior: " + getSaldoConta());
+
+			setSaldoConta(getSaldoConta() - taxa);
+
+			System.out.println("Total descontado:" + taxa);
+
+			System.out.println("Saldo atualizado: " + getSaldoConta());
+
+			return taxa;
+
+		} else {
+
+			System.out.println("Não é necessária a aplicação da taxa tributável.");
+
+		}
+		return 0;
+
 	}
 }

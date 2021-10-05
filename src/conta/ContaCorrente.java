@@ -3,13 +3,14 @@ package conta;
 import java.util.Scanner;
 
 import cliente.Cliente;
+import servicos.InterfaceTaxa;
 
 import java.time.LocalDate;
 
-public class ContaCorrente extends ContaBancaria {
+public class ContaCorrente extends ContaBancaria implements InterfaceTaxa {
 
 	// Atributos
-	private final double desconto = 13.9;
+	private final double DESCONTO = 13.9;
 	private int quantidadeSaques;
 	private int quantidadeTransferencias;
 	private int quantidadeMaximaSaques;
@@ -32,7 +33,7 @@ public class ContaCorrente extends ContaBancaria {
 	}
 
 	public double getDesconto() {
-		return desconto;
+		return DESCONTO;
 	}
 
 	public double getQuantidadeTransferencias() {
@@ -102,6 +103,8 @@ public class ContaCorrente extends ContaBancaria {
 					break;
 				}
 
+				scan.close();
+
 				// Caso o valor do saque seja maior que o valor da conta
 			} else {
 
@@ -120,7 +123,7 @@ public class ContaCorrente extends ContaBancaria {
 		if (getMotivoFechamento() == null) {
 
 			if (getDataAberturaConta().getDayOfMonth() == LocalDate.now().getDayOfMonth()) {
-				setSaldoConta(getSaldoConta() - desconto);
+				setSaldoConta(getSaldoConta() - DESCONTO);
 				System.out.println(getSaldoConta());
 			}
 		} else {
@@ -173,6 +176,8 @@ public class ContaCorrente extends ContaBancaria {
 					break;
 				}
 
+				scan.close();
+
 			} else {
 
 				System.out.println("Não há saldo suficiente para efetuar a transferência");
@@ -181,5 +186,35 @@ public class ContaCorrente extends ContaBancaria {
 		} else {
 			System.out.println("Conta encerrada, não é possível fazer qualquer tipo de transação.");
 		}
+	}
+
+
+	public double tributacao() {
+		
+		LocalDate inicialDate = LocalDate.parse("2021-11-01");
+
+		if (inicialDate.isBefore(LocalDate.now()) || inicialDate.equals(LocalDate.now())) {
+			
+			System.out.println("CONTA CORRENTE");
+
+			double taxa = getSaldoConta() * 0.03;
+
+			System.out.println("Saldo anterior: " + getSaldoConta());
+
+			setSaldoConta(getSaldoConta() - taxa);
+
+			System.out.println("Total descontado:" + taxa);
+
+			System.out.println("Saldo atualizado: " + getSaldoConta());
+
+			return taxa;
+
+		} else {
+
+			System.out.println("Não é necessária a aplicação da taxa tributável.");
+
+		}
+		return 0;
+
 	}
 }
