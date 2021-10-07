@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import cliente.Cliente;
 import servicos.InterfaceTaxa;
+import servicos.Investimento;
 
 import java.time.LocalDate;
 
@@ -20,9 +21,9 @@ public class ContaCorrente extends ContaBancaria implements InterfaceTaxa {
 	// Construtores
 	public ContaCorrente(Cliente cliente, String nomeBanco, String codigoIdentificadorBanco, String numeroConta,
 			String numeroAgencia, double saldoConta, LocalDate dataAberturaConta, LocalDate dataFechamentoConta,
-			String motivoFechamento, int quantidadeMaximaSaques, int quantidadeMaximaTransferencias) {
+			String motivoFechamento, Investimento investimento, int quantidadeMaximaSaques, int quantidadeMaximaTransferencias) {
 		super(cliente, nomeBanco, codigoIdentificadorBanco, numeroConta, numeroAgencia, saldoConta, dataAberturaConta,
-				dataFechamentoConta, motivoFechamento);
+				dataFechamentoConta, motivoFechamento, investimento);
 		this.quantidadeMaximaSaques = quantidadeMaximaSaques;
 		this.quantidadeMaximaTransferencias = quantidadeMaximaTransferencias;
 	}

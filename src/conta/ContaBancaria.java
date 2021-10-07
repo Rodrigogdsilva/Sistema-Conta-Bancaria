@@ -1,9 +1,13 @@
 package conta;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import cliente.Cliente;
 import servicos.Investimento;
+import servicos.InvestimentoAnual;
+import servicos.InvestimentoMensal;
+import servicos.InvestimentoSemestral;
 
 public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 
@@ -19,10 +23,12 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 	private String motivoFechamento;
 	private Investimento investimento;
 
+	private int instance;
+
 	// Construtores
 	public ContaBancaria(Cliente cliente, String nomeBanco, String codigoIdentificadorBanco, String numeroConta,
 			String numeroAgencia, double saldoConta, LocalDate dataAberturaConta, LocalDate dataFechamentoConta,
-			String motivoFechamento) {
+			String motivoFechamento, Investimento investimento) {
 		this.cliente = cliente;
 		this.nomeBanco = nomeBanco;
 		this.codigoIdentificadorBanco = codigoIdentificadorBanco;
@@ -32,6 +38,7 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 		this.dataAberturaConta = dataAberturaConta;
 		this.dataFechamentoConta = dataFechamentoConta;
 		this.motivoFechamento = motivoFechamento;
+		this.investimento = investimento;
 	}
 
 	// Getters e Setters
@@ -169,6 +176,41 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 		} else {
 			System.out.println("Conta encerrada, não é possível fazer qualquer tipo de transação.");
 		}
+	}
+
+	public void investimentoV(BigDecimal valor) {
+
+		if (instance == 0) {
+			setInvestimento(new InvestimentoMensal());
+		}
+		if (instance == 1) {
+			setInvestimento(new InvestimentoSemestral());
+		}
+		if (instance == 2) {
+			setInvestimento(new InvestimentoAnual());
+		}
+
+		if (saldoConta > valor.doubleValue()) {
+
+			saldoConta -= valor.doubleValue();
+
+			if (investimento instanceof InvestimentoMensal) {
+				System.out.printf("Montante valorizado após 30 dias: R$ %.2f%n", getInvestimento().valorizacao(valor));
+			} else if (investimento instanceof InvestimentoSemestral) {
+				System.out.printf("Montante valorizado após 6 meses: R$ %.2f%n", getInvestimento().valorizacao(valor));
+			} else {
+				System.out.printf("Montante valorizado após 1 ano: R$ %.2f%n", getInvestimento().valorizacao(valor));
+			}
+			if (!(investimento instanceof InvestimentoAnual)) {
+				instance++;
+			} else {
+				instance = 0;
+			}
+		} else {
+
+			System.out.println("Valor a investir desejado é maior do que o saldo total da conta. ");
+		}
+
 	}
 
 	// Implementação do toString sobrescrevendo

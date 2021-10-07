@@ -1,11 +1,11 @@
 package conta;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 import cliente.Cliente;
 import servicos.InterfaceTaxa;
-
-import java.time.LocalDate;
+import servicos.Investimento;
 
 public class ContaPoupanca extends ContaBancaria implements InterfaceTaxa {
 
@@ -18,9 +18,9 @@ public class ContaPoupanca extends ContaBancaria implements InterfaceTaxa {
 	// Construtores
 	public ContaPoupanca(Cliente cliente, String nomeBanco, String codigoIdentificadorBanco, String numeroConta,
 			String numeroAgencia, double saldoConta, LocalDate dataAberturaConta, LocalDate dataFechamentoConta,
-			String motivoFechamento, int rendimentoMensal, int descontoCarencia, int periodoCarencia) {
+			String motivoFechamento, Investimento investimento, int rendimentoMensal, int descontoCarencia, int periodoCarencia) {
 		super(cliente, nomeBanco, codigoIdentificadorBanco, numeroConta, numeroAgencia, saldoConta, dataAberturaConta,
-				dataFechamentoConta, motivoFechamento);
+				dataFechamentoConta, motivoFechamento, investimento);
 		this.rendimentoMensal = rendimentoMensal;
 		this.descontoCarencia = descontoCarencia;
 		this.periodoCarencia = periodoCarencia;
