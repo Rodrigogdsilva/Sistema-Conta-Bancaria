@@ -7,6 +7,7 @@ import cliente.TipoCliente;
 import conta.ContaCorrente;
 import conta.ContaEmpresarial;
 import conta.ContaPoupanca;
+import servicos.MonthlyInvestment;
 
 public class MainPrimeiroExercicio {
 
@@ -25,27 +26,28 @@ public class MainPrimeiroExercicio {
 
 		// Instanciando objetos do tipo Conta Corrente
 		ContaCorrente contaCorrente1 = new ContaCorrente(cliente1, "Itaú", "341", "11111", "1111", 1000.00,
-				LocalDate.parse("2008-02-07"), LocalDate.parse("2017-03-08"), "Mudança de Instituição Bancária", 5, 4);
+				LocalDate.parse("2008-02-07"), LocalDate.parse("2017-03-08"), "Mudança de Instituição Bancária",
+				new MonthlyInvestment(), 5, 4);
 		ContaCorrente contaCorrente2 = new ContaCorrente(cliente2, "Santander", "033", "22222", "2222", 500.00,
-				LocalDate.parse("2015-04-08"), null, null, 10, 8);
+				LocalDate.parse("2015-04-08"), null, null, new MonthlyInvestment(), 10, 8);
 		ContaCorrente contaCorrente3 = new ContaCorrente(cliente3, "Original", "212", "33333", "3333", 1700.00,
-				LocalDate.parse("2013-02-09"), null, null, 4, 3);
+				LocalDate.parse("2013-02-09"), null, null, new MonthlyInvestment(), 4, 3);
 
 		// Instanciando objetos do tipo Conta Corrente
 		ContaPoupanca contaPoupanca1 = new ContaPoupanca(cliente4, "Banco do Brasil", "756", "44444", "4444", 3400.00,
-				LocalDate.parse("2002-09-30"), null, null, 150, 135, 1);
+				LocalDate.parse("2002-09-30"), null, null, new MonthlyInvestment(), 150, 135, 1);
 		ContaPoupanca contaPoupanca2 = new ContaPoupanca(cliente5, "Votorantim", "655", "55555", "5555", 1238.75,
-				LocalDate.parse("2017-09-12"), null, null, 300, 200, 2);
+				LocalDate.parse("2017-09-12"), null, null, new MonthlyInvestment(), 300, 200, 2);
 		ContaPoupanca contaPoupanca3 = new ContaPoupanca(cliente6, "Bradesco S.A", "237", "66666", "6666", 357.79,
-				LocalDate.parse("2016-12-01"), null, null, 127, 50, 3);
+				LocalDate.parse("2016-12-01"), null, null, new MonthlyInvestment(), 127, 50, 3);
 
 		// Instanciando objetos do tipo Conta Empresarial
 		ContaEmpresarial contaEmpresarial1 = new ContaEmpresarial(cliente7, "Inter S.A", "077", "77777", "7777",
-				1103.03, LocalDate.parse("2010-11-28"), null, null, "Ambev");
+				1103.03, LocalDate.parse("2010-11-28"), null, null, new MonthlyInvestment(), "Ambev");
 		ContaEmpresarial contaEmpresarial2 = new ContaEmpresarial(cliente8, "Caixa Econômica Federal", "104", "88888",
-				"8888", 135.01, LocalDate.parse("2013-05-22"), null, null, "JBS");
+				"8888", 135.01, LocalDate.parse("2013-05-22"), null, null, new MonthlyInvestment(), "JBS");
 		ContaEmpresarial contaEmpresarial3 = new ContaEmpresarial(cliente9, "Banco Safra S.A", "422", "99999", "9999",
-				4922.01, LocalDate.parse("2007-08-17"), null, null, "TAM");
+				4922.01, LocalDate.parse("2007-08-17"), null, null, new MonthlyInvestment(), "TAM");
 
 		System.out.println(contaCorrente1);
 		System.out.println();

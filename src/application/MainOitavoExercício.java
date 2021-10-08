@@ -7,6 +7,7 @@ import cliente.Cliente;
 import cliente.TipoCliente;
 import conta.ContaBancaria;
 import conta.ContaCorrente;
+import servicos.MonthlyInvestment;
 
 public class MainOitavoExercício {
 	public static void main(String[] args) {
@@ -14,9 +15,10 @@ public class MainOitavoExercício {
 		Cliente cliente1 = new Cliente("Rodrigo", "111.111.111-11", "500", TipoCliente.SERVIDOR_PUBLICO);
 
 		ContaCorrente contaCorrente2 = new ContaCorrente(cliente1, "Santander", "033", "22222", "2222", 500.00,
-				LocalDate.parse("2015-04-08"), null, null, 10, 8);
+				LocalDate.parse("2015-04-08"), null, null, new MonthlyInvestment(), 10, 8);
 		ContaCorrente contaCorrente1 = new ContaCorrente(cliente1, "Itaú", "341", "11111", "1111", 1000.00,
-				LocalDate.parse("2008-02-07"), LocalDate.parse("2017-03-08"), "Mudança de Instituição Bancária", 5, 4);
+				LocalDate.parse("2008-02-07"), LocalDate.parse("2017-03-08"), "Mudança de Instituição Bancária",
+				new MonthlyInvestment(), 5, 4);
 
 		System.out.println(buildingASentenceWithString(contaCorrente1));
 		System.out.println(buildingASentenceWithStringBuilder(contaCorrente1));

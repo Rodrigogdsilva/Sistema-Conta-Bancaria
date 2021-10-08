@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import cliente.Cliente;
 import servicos.InterfaceTaxa;
-import servicos.Investimento;
+import servicos.Investment;
 
 public class ContaPoupanca extends ContaBancaria implements InterfaceTaxa {
 
@@ -18,7 +18,7 @@ public class ContaPoupanca extends ContaBancaria implements InterfaceTaxa {
 	// Construtores
 	public ContaPoupanca(Cliente cliente, String nomeBanco, String codigoIdentificadorBanco, String numeroConta,
 			String numeroAgencia, double saldoConta, LocalDate dataAberturaConta, LocalDate dataFechamentoConta,
-			String motivoFechamento, Investimento investimento, int rendimentoMensal, int descontoCarencia, int periodoCarencia) {
+			String motivoFechamento, Investment investimento, int rendimentoMensal, int descontoCarencia, int periodoCarencia) {
 		super(cliente, nomeBanco, codigoIdentificadorBanco, numeroConta, numeroAgencia, saldoConta, dataAberturaConta,
 				dataFechamentoConta, motivoFechamento, investimento);
 		this.rendimentoMensal = rendimentoMensal;

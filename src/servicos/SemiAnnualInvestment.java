@@ -2,9 +2,9 @@ package servicos;
 
 import java.math.BigDecimal;
 
-public class InvestimentoAnual implements Investimento {
+public class SemiAnnualInvestment implements Investment{
 
-	private final BigDecimal juros = BigDecimal.valueOf(0.30);
+	private final BigDecimal juros = BigDecimal.valueOf(0.10);
 
 	public BigDecimal valorizacao(BigDecimal valor) {
 

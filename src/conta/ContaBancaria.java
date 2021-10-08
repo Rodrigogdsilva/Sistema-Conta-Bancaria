@@ -2,12 +2,13 @@ package conta;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import cliente.Cliente;
-import servicos.Investimento;
-import servicos.InvestimentoAnual;
-import servicos.InvestimentoMensal;
-import servicos.InvestimentoSemestral;
+import servicos.Investment;
+import servicos.AnnualInvestment;
+import servicos.MonthlyInvestment;
+import servicos.SemiAnnualInvestment;
 
 public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 
@@ -21,14 +22,12 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 	private LocalDate dataAberturaConta;
 	private LocalDate dataFechamentoConta;
 	private String motivoFechamento;
-	private Investimento investimento;
-
-	private int instance;
+	private Investment investment;
 
 	// Construtores
 	public ContaBancaria(Cliente cliente, String nomeBanco, String codigoIdentificadorBanco, String numeroConta,
 			String numeroAgencia, double saldoConta, LocalDate dataAberturaConta, LocalDate dataFechamentoConta,
-			String motivoFechamento, Investimento investimento) {
+			String motivoFechamento, Investment investimento) {
 		this.cliente = cliente;
 		this.nomeBanco = nomeBanco;
 		this.codigoIdentificadorBanco = codigoIdentificadorBanco;
@@ -38,7 +37,7 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 		this.dataAberturaConta = dataAberturaConta;
 		this.dataFechamentoConta = dataFechamentoConta;
 		this.motivoFechamento = motivoFechamento;
-		this.investimento = investimento;
+		this.investment = investimento;
 	}
 
 	// Getters e Setters
@@ -114,12 +113,12 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 		this.cliente = cliente;
 	}
 
-	public Investimento getInvestimento() {
-		return investimento;
+	public Investment getInvestment() {
+		return investment;
 	}
 
-	public void setInvestimento(Investimento investimento) {
-		this.investimento = investimento;
+	public void setInvestment(Investment investment) {
+		this.investment = investment;
 	}
 
 	// Método para sacar valores
@@ -178,37 +177,37 @@ public abstract class ContaBancaria implements Comparable<ContaBancaria> {
 		}
 	}
 
-	public void investimentoV(BigDecimal valor) {
+	public void apply(BigDecimal amount) {
 
-		if (instance == 0) {
-			setInvestimento(new InvestimentoMensal());
-		}
-		if (instance == 1) {
-			setInvestimento(new InvestimentoSemestral());
-		}
-		if (instance == 2) {
-			setInvestimento(new InvestimentoAnual());
-		}
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate date = LocalDate.now();
 
-		if (saldoConta > valor.doubleValue()) {
+		if (saldoConta > amount.doubleValue()) {
 
-			saldoConta -= valor.doubleValue();
+			saldoConta -= amount.doubleValue();
 
-			if (investimento instanceof InvestimentoMensal) {
-				System.out.printf("Montante valorizado após 30 dias: R$ %.2f%n", getInvestimento().valorizacao(valor));
-			} else if (investimento instanceof InvestimentoSemestral) {
-				System.out.printf("Montante valorizado após 6 meses: R$ %.2f%n", getInvestimento().valorizacao(valor));
+			if (investment instanceof MonthlyInvestment) {
+				LocalDate month = date.plusMonths(1);
+				System.out.printf("Montante valorizado em (" + dtf.format(month) + "): R$ %.2f%n",
+						getInvestment().valorizacao(amount));
+
+			} else if (investment instanceof SemiAnnualInvestment) {
+				LocalDate semester = date.plusMonths(6);
+				date.plusMonths(6);
+				System.out.printf("Montante valorizado em (" + dtf.format(semester) + "): R$ %.2f%n",
+						getInvestment().valorizacao(amount));
+
 			} else {
-				System.out.printf("Montante valorizado após 1 ano: R$ %.2f%n", getInvestimento().valorizacao(valor));
+				LocalDate year = date.plusYears(1);
+				System.out.printf("Montante valorizado em (" + dtf.format(year) + "): R$ %.2f%n",
+						getInvestment().valorizacao(amount));
+
 			}
-			if (!(investimento instanceof InvestimentoAnual)) {
-				instance++;
-			} else {
-				instance = 0;
-			}
+
 		} else {
 
 			System.out.println("Valor a investir desejado é maior do que o saldo total da conta. ");
+
 		}
 
 	}

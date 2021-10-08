@@ -2,7 +2,7 @@ package servicos;
 
 import java.math.BigDecimal;
 
-public abstract interface Investimento {
+public abstract interface Investment {
 
 	public BigDecimal valorizacao(BigDecimal valor);
 
